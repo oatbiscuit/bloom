@@ -21,7 +21,7 @@
 ## installation
 
 ### flatpak (recommended)
-you can download the latest `.flatpak` bundle from the Releases page.
+you can download the latest `.flatpak` bundle from the [Releases](https://github.com/oatbiscuit/bloom/releases/latest) page.
 
 to install it via the terminal:
 
@@ -34,4 +34,4 @@ bloom is a wellness tracker intended for personal awareness only. It is not a me
 
 ## license
 
-this project is licensed under the GPL-3.0-or-later License. see the COPYING file for details.
+this project is licensed under the GPL-3.0-or-later License. see the [COPYING](https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/COPYING) file for details.
