@@ -14,9 +14,9 @@
 
 ## screenshots
 
-<img src="https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/data/screenshots/calendar.png" width="250">
-<img src="https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/data/screenshots/dialog.png" width="250">
-<img src="https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/data/screenshots/insights.png" width="250">
+<img src="https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/data/screenshots/calendar.png">
+<img src="https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/data/screenshots/dialog.png">
+<img src="https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/data/screenshots/insights.png">
 
 ## installation
 
