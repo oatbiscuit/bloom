@@ -1,0 +1,22 @@
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:gnome="http://api.gnome.org/doap-extensions#"
+         xmlns="http://usefulinc.com/ns/doap#">
+
+  <name xml:lang="en">bloom</name>
+  <shortdesc xml:lang="en">Track your menstrual cycle and symptoms</shortdesc>
+  <homepage rdf:resource="https://github.com/oatbiscuit/bloom" />
+  <bug-database rdf:resource="https://github.com/oatbiscuit/bloom/issues" />
+
+  <programming-language>Vala</programming-language>
+  <platform>GTK 4</platform>
+  <platform>Libadwaita</platform>
+
+  <maintainer>
+    <foaf:Person>
+      <foaf:name>oatbiscuit</foaf:name>
+      <foaf:mbox rdf:resource="mailto:kingorgg@gmail.com" />
+    </foaf:Person>
+  </maintainer>
+</Project>

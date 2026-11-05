@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/io/github/oatbiscuit/bloom">
+    <!-- ui files -->
+    <file preprocess="xml-stripblanks">ui/window.ui</file>
+    <file preprocess="xml-stripblanks">ui/preferences.ui</file>
+    <file preprocess="xml-stripblanks">ui/day_dialog.ui</file>
+    <!-- css -->
+    <file compressed="true">css/style.css</file>
+  </gresource>
+</gresources>

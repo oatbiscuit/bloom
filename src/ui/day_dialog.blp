@@ -1,0 +1,128 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $BloomDayDialog : Adw.Dialog {
+  content-width: 640;
+
+  Adw.ToolbarView {
+    [top]
+    HeaderBar {
+      [start]
+      Button clear_day_btn {
+          icon-name: "user-trash-symbolic";
+          tooltip-text: _("Clear Day");
+          styles ["destructive-action"]
+      }
+      
+      [title]
+      Adw.WindowTitle day_title {
+        subtitle: _("Log Period");
+      }
+    }
+
+    Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        title: _("Cycle");
+
+        Adw.SwitchRow period_switch {
+          title: _("Period Day");
+          subtitle: _("Mark this day as a bleeding day");
+        }
+
+        Adw.ComboRow period_flow {
+          title: _("Flow");
+          model: StringList {
+            strings [
+              _("None"),
+              _("Spotting"),
+              _("Light"),
+              _("Medium"),
+              _("Heavy")
+            ]
+          };
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Body");
+
+        Adw.ComboRow ovulation_test_row {
+          title: _("Ovulation Test (OPK)");
+          model: StringList {
+            strings [
+              _("Not Logged"),
+              _("Negative"),
+              _("Positive (LH Surge)"),
+              _("Peak")
+            ]
+          };
+        }
+
+        Adw.SpinRow temp_row {
+          title: _("Basal Temperature (BBT)");
+          subtitle: _("in celsius (°C)");
+          adjustment: Adjustment {
+            lower: 34.0;
+            upper: 42.0;
+            step-increment: 0.1;
+          };
+          digits: 1;
+          editable: true;
+        }
+
+        Adw.ComboRow cervical_mucus_row {
+          title: _("Cervical Mucus (CM)");
+          model: StringList {
+            strings [
+              _("Not Logged"),
+              _("Dry / None"),
+              _("Sticky"),
+              _("Creamy"),
+              _("Egg White / Stretchy")
+            ]
+          };
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Notes");
+
+        Adw.EntryRow notes_row {
+          title: _("Notes");
+        }
+      }
+
+      Adw.PreferencesGroup {
+        title: _("Symptoms");
+
+        Adw.SwitchRow cramps_row {
+          title: _("Cramps");
+        }
+
+        Adw.SwitchRow bloating_row {
+          title: _("Bloating");
+        }
+
+        Adw.SwitchRow tenderness_row {
+          title: _("Breast Tenderness");
+        }
+
+        Adw.SwitchRow fatigue_row {
+          title: _("Fatigue");
+        }
+
+        Adw.SwitchRow headache_row {
+          title: _("Headache");
+        }
+
+        Adw.SwitchRow mood_row {
+          title: _("Mood Changes");
+        }
+
+        Adw.SwitchRow cravings_row {
+          title: _("Cravings");
+        }
+      }
+    }
+  }
+}

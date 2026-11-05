@@ -1,0 +1,67 @@
+.calendar_grid {
+    background-color: white;
+    border-radius: 12px;
+    padding: 16px;
+
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.03),
+        0 2px 4px rgba(0, 0, 0, 0.03);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.calendar_grid button {
+    border-radius: 3px;
+    margin: 2px;
+}
+
+.calendar_grid button:hover {
+    background-color: alpha(currentColor, 0.08);
+}
+
+.calendar_grid button.today {
+    background-color: transparent;
+    border: 2px solid currentColor;
+    color: @accent_color;
+    outline-offset: -4px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.calendar_grid button.today:hover {
+    background-color: alpha(@accent_color, 0.1);
+}
+
+.calendar_grid button.period_day {
+    background-color: alpha(#e01b24, 0.2);
+    color: #e01b24;
+    border-radius: 50%;
+}
+
+.calendar_grid button.period_day:hover {
+    background-color: alpha(#e01b24, 0.35);
+}
+
+.calendar_grid button.predicted_period_day {
+    border-width: 2px;
+    border-style: dashed;
+    border-color: alpha(#e01b24, 0.2);
+    color: #e01b24;
+    border-radius: 50%;
+}
+
+.calendar_grid button.predicted_period_day:hover {
+    border-width: 2px;
+    border-style: dashed;
+    border-color: alpha(#e01b24, 0.2);
+}
+
+.calendar_grid button.ovulation_day {
+    background-color: alpha(#9141ac, 0.2);
+    color: #9141ac;
+    border-radius: 50%;
+}
+
+.calendar_grid button.ovulation_day:hover {
+    background-color: alpha(#9141ac, 0.35);
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="Bloom">
+	<schema id="io.github.oatbiscuit.bloom" path="/io/github/oatbiscuit/bloom/">
+	  <key name="custom-cycle-length" type="i">
+      <default>0</default>
+      <summary>Custom Cycle Length</summary>
+      <description>Set to 0 to use the rolling median. Set to a number (15-60) to override.</description>
+    </key>
+    <key name="custom-period-length" type="i">
+      <default>0</default>
+      <summary>Custom Period Length</summary>
+      <description>Set to 0 to use the rolling median. Set to a number (1-14) to override.</description>
+    </key>
+    <key name="custom-luteal-phase" type="i">
+      <default>14</default>
+      <summary>Custom Luteal Phase Length</summary>
+      <description>The number of days between ovulation and the next period.</description>
+    </key>
+	  <key name="week-start-day" type="s">
+      <default>'monday'</default>
+      <summary>Week Start Day</summary>
+      <description>Which day the week starts on (monday or sunday).</description>
+    </key>
+	  
+	  <key name="last-period-reminder" type="s">
+      <default>''</default>
+      <summary>Last Period Reminder</summary>
+      <description>The date (YYYY-MM-DD) when the last period reminder was sent.</description>
+    </key>
+	</schema>
+</schemalist>

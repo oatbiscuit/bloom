@@ -1,0 +1,89 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $BloomPreferencesDialog : Adw.PreferencesDialog {
+  title: _("Preferences");
+
+  Adw.PreferencesPage {
+  
+    Adw.PreferencesGroup {
+      title: _("Calendar");
+      
+      Adw.ComboRow week_start_row {
+        title: _("Week Starts On");
+        model: StringList {
+          strings [ "Monday", "Sunday" ]
+        };
+      }
+    }
+  
+    Adw.PreferencesGroup {
+      title: _("Cycle Overrides");
+
+      Adw.SpinRow custom_cycle_row {
+        title: _("Cycle Length");
+        subtitle: _("Set to 0 to use automated predictions");
+        adjustment: Adjustment { lower: 0; upper: 60; step-increment: 1; };
+        digits: 0;
+      }
+
+      Adw.SpinRow custom_period_row {
+        title: _("Period Length");
+        subtitle: _("Set to 0 to use automated predictions");
+        adjustment: Adjustment { lower: 0; upper: 14; step-increment: 1; };
+        digits: 0;
+      }
+
+      Adw.SpinRow custom_luteal_row {
+        title: _("Luteal Phase Length");
+        subtitle: _("Days between ovulation and next period");
+        adjustment: Adjustment { lower: 9; upper: 16; step-increment: 1; };
+        digits: 0;
+      }
+    }
+    
+    Adw.PreferencesGroup {
+      title: _("Data and Privacy");
+      description: _("Your data is stored locally on this device.");
+      
+      Adw.ActionRow db_path_row {
+        title: _("Database Location");
+        
+        [suffix]
+        Button copy_path_btn {
+          icon-name: "edit-copy-symbolic";
+          valign: center;
+          tooltip-text: _("Copy Path");
+        }
+      }
+
+      Adw.ActionRow export_data_row {
+        title: _("Export Data");
+        subtitle: _("Save your logs to a CSV file");
+        activatable: true;
+        [suffix]
+        Image { icon-name: "go-next-symbolic"; valign: center; }
+      }
+      
+      Adw.ActionRow import_data_row {
+        title: _("Import Data");
+        subtitle: _("Restore your logs from a CSV file");
+        activatable: true;
+        [suffix]
+        Image { icon-name: "go-next-symbolic"; valign: center; }
+      }
+
+      Adw.ActionRow delete_data_row {
+        title: _("Delete All Data");
+        subtitle: _("WARNING: This action cannot be undone.");
+        [suffix]
+        Button delete_button {
+          icon-name: "user-trash-symbolic";
+          valign: center;
+          styles ["destructive-action"]
+          tooltip-text: _("Delete All Data");
+        }
+      }
+    }
+  }
+}

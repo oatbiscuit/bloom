@@ -1,0 +1,243 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $BloomWindow : Adw.ApplicationWindow {
+  title: _("Bloom");
+  default-width: 1280;
+  default-height: 720;
+
+  Adw.ToastOverlay toast_overlay {
+    Box {
+      orientation: vertical;
+
+      HeaderBar {
+        [start]
+        Button prev_month_btn {
+          icon-name: "go-previous-symbolic";
+          tooltip-text: _("Previous Month");
+        }
+
+        [start]
+        Button next_month_btn {
+          icon-name: "go-next-symbolic";
+          tooltip-text: _("Next Month");
+        }
+
+        [start]
+        MenuButton jump_to_date_btn {
+          icon-name: "x-office-calendar-symbolic";
+          tooltip-text: _("Jump to Date");
+          popover: Popover {
+            Calendar jump_calendar {
+              margin-start: 6;
+              margin-end: 6;
+              margin-top: 6;
+              margin-bottom: 6;
+            }   
+          };
+        }
+
+        [title]
+        Adw.ViewSwitcher view_switcher {
+          policy: wide;
+          vexpand: true;
+        }
+
+        [end]
+        MenuButton {
+          icon-name: "open-menu-symbolic";
+          tooltip-text: _("Main Menu");
+          menu-model: main_menu;
+          primary: true;
+        }
+      }
+
+      Adw.ViewStack view_stack {
+        hexpand: true;
+        vexpand: true;
+
+        Adw.ViewStackPage {
+          name: "calendar";
+          title: _("Calendar");
+          icon-name: "x-office-calendar-symbolic";
+
+          child: Adw.Clamp {
+            maximum-size: 800;
+
+            Box {
+              orientation: vertical;
+              spacing: 24;
+              margin-start: 12;
+              margin-end: 12;
+              margin-bottom: 24;
+
+              Label month_label {
+                margin-top: 12;
+                margin-bottom: 12;
+                styles ["title-4"]
+              }
+
+              Grid calendar_grid {
+                hexpand: true;
+                vexpand: false;
+                column-homogeneous: true;
+                row-homogeneous: true;
+                column-spacing: 2;
+                row-spacing: 2;
+              }
+
+              Adw.PreferencesGroup {
+                Adw.ActionRow cycle_day_row {
+                  title: _("Current Cycle Day");
+                }
+
+                Adw.ActionRow next_period_row {
+                  title: _("Next Period Date");
+                }
+              }
+            } // end Box
+          }; // end Clamp
+        } // end ViewStackPage
+
+        Adw.ViewStackPage {
+          name: "insights";
+          title: _("Insights");
+          icon-name: "info-outline-symbolic";
+
+          child: ScrolledWindow {
+            hscrollbar-policy: never;
+            vscrollbar-policy: automatic;
+
+            Adw.Clamp {
+              maximum-size: 800;
+              margin-start: 12;
+              margin-end: 12;
+              margin-bottom: 24;
+
+              Adw.PreferencesPage {
+                Adw.PreferencesGroup {
+                  title: _("Yearly Heatmap");
+
+                  Adw.Bin {
+                    DropDown year_dropdown {}
+                  }
+
+                  DrawingArea heatmap_area {
+                    hexpand: true;
+                    vexpand: false;
+                    height-request: 120;
+                    margin-top: 12;
+                    margin-start: 12;
+                    margin-end: 12;
+                    margin-bottom: 12;
+                  }
+                }
+                         
+                Adw.PreferencesGroup {
+                  title: _("Cycle Overview");
+
+                  Adw.ActionRow avg_cycle_row {
+                    title: _("Average Cycle Length");
+                  }
+                  Adw.ActionRow med_cycle_row {
+                    title: _("Median Cycle Length");
+                  }
+                  Adw.ActionRow avg_period_row {
+                    title: _("Average Period Length");
+                  }
+                  Adw.ActionRow med_period_row {
+                    title: _("Median Period Length");
+                  }
+                }
+
+                Adw.PreferencesGroup {
+                  title: _("Cycle Health");
+
+                  Adw.ActionRow {
+                    title: _("Regularity");
+                    subtitle: _("Based on your last 6 cycles");
+                    [suffix]
+                    Label regularity_label {
+                      label: _("Not enough data");
+                    }
+                  }
+                }
+
+                Adw.PreferencesGroup {
+                  title: _("All-Time Stats");
+
+                  Adw.ActionRow all_time_cycle_row {
+                    title: _("All-Time Average Cycle");
+                  }
+
+                  Adw.ActionRow all_time_period_row {
+                    title: _("All-Time Average Period");
+                  }
+                }
+
+                Adw.PreferencesGroup {
+                  title: _("History");
+                  Adw.ActionRow total_cycles_row {
+                    title: _("Total Cycles Tracked");
+                  }
+                }
+              }
+            }
+          };
+        }
+        
+        Adw.ViewStackPage {
+          name: "notes";
+          title: _("Notes");
+          icon-name: "document-edit-symbolic";
+
+          child: ScrolledWindow {
+            hscrollbar-policy: never;
+            vscrollbar-policy: automatic;
+
+            Adw.Clamp {
+              maximum-size: 800;
+              margin-start: 12;
+              margin-end: 12;
+              margin-top: 24;
+              margin-bottom: 24;
+              vexpand: true;
+
+              Box {
+                orientation: vertical;
+                spacing: 24;
+
+                SearchEntry search_notes_entry {
+                  placeholder-text: _("Search your notes…");
+                }
+
+                ScrolledWindow {
+                  vexpand: true;
+                  hscrollbar-policy: never;
+                  vscrollbar-policy: automatic;
+
+                  Adw.PreferencesGroup notes_group {
+                  }
+                }
+              }
+            }
+          };
+        }
+
+      } // end ViewStack
+    } // end Box
+  } // end ToastOverlay
+} // end Template
+
+menu main_menu {
+  section {
+    item {
+      label: _("Preferences");
+      action: "app.preferences";
+    }
+    item {
+      label: _("About");
+      action: "app.about";
+    }
+  } // end Section
+} //end menu
