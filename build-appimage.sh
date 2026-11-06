@@ -51,6 +51,9 @@ cp "$INSTALL_PREFIX/share/icons/hicolor/scalable/apps/"*.svg \
 cp "$INSTALL_PREFIX/share/icons/hicolor/symbolic/apps/"*.svg \
    "$APPDIR/usr/share/icons/hicolor/symbolic/apps/" 2>/dev/null || true
 
+mkdir -p "$APPDIR/usr/share/icons"
+cp -r /usr/share/icons/Adwaita "$APPDIR/usr/share/icons/" 2>/dev/null || true
+
 cp "$INSTALL_PREFIX/share/applications/"*.desktop \
    "$APPDIR/usr/share/applications/" 2>/dev/null || true
 
@@ -67,10 +70,10 @@ HERE="$(dirname "$(readlink -f "${0}")")"
 export PATH="${HERE}/usr/bin:${PATH}"
 export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
 export GSETTINGS_SCHEMA_DIR="${HERE}/usr/share/glib-2.0/schemas"
+# Add GTK_DATA_PREFIX and ensure XDG_DATA_DIRS points to our bundle
 export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 exec "${HERE}/usr/bin/bloom" "$@"
 EOF
-chmod +x "$APPDIR/AppRun"
 
 cp "$APPDIR/usr/share/applications/"*.desktop "$APPDIR/" 2>/dev/null || true
 
@@ -82,6 +85,13 @@ elif command -v convert >/dev/null 2>&1; then
     convert -background none \
         "$APPDIR/usr/share/icons/hicolor/scalable/apps/io.github.oatbiscuit.bloom.svg" \
         -resize 256x256 "$APPDIR/io.github.oatbiscuit.bloom.png"
+fi
+
+if [ -f "$APPDIR/io.github.oatbiscuit.bloom.png" ]; then
+    mkdir -p "$APPDIR/usr/share/icons/hicolor/256x256/apps"
+    cp "$APPDIR/io.github.oatbiscuit.bloom.png" \
+       "$APPDIR/usr/share/icons/hicolor/256x256/apps/"
+    gtk4-update-icon-cache -q -t -f "$APPDIR/usr/share/icons/hicolor" 2>/dev/null || true
 fi
 
 rm -f "$APPDIR/usr/lib/libc.so.6" \
