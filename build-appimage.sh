@@ -30,9 +30,12 @@ cp "$BINARY" "$APPDIR/usr/bin/"
 chmod +x "$APPDIR/usr/bin/$APP_NAME"
 
 ldd "$BINARY" | grep "=> /" | awk '{print $3}' | while read -r lib; do
-    if [[ "$lib" =~ ^/(lib|lib64|usr/lib/x86_64-linux-gnu)/(libc|libm|libdl|libpthread|librt|ld-linux) ]]; then
-        continue
-    fi
+    libname=$(basename "$lib")
+    case "$libname" in
+        libc.so.*|libm.so.*|libdl.so.*|libpthread.so.*|librt.so.*|ld-linux*)
+            continue
+            ;;
+    esac
     cp -L "$lib" "$APPDIR/usr/lib/" 2>/dev/null || true
 done
 
@@ -80,6 +83,13 @@ elif command -v convert >/dev/null 2>&1; then
         "$APPDIR/usr/share/icons/hicolor/scalable/apps/io.github.oatbiscuit.bloom.svg" \
         -resize 256x256 "$APPDIR/io.github.oatbiscuit.bloom.png"
 fi
+
+rm -f "$APPDIR/usr/lib/libc.so.6" \
+      "$APPDIR/usr/lib/libc.so" \
+      "$APPDIR/usr/lib/libm.so.6" \
+      "$APPDIR/usr/lib/libdl.so.2" \
+      "$APPDIR/usr/lib/libpthread.so.0" \
+      "$APPDIR/usr/lib/librt.so.1"
 
 if [ -f "./appimagetool" ]; then
     APPIMAGETOOL="./appimagetool"
