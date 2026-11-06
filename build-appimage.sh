@@ -22,7 +22,9 @@ mkdir -p "$APPDIR/usr/bin"
 mkdir -p "$APPDIR/usr/lib"
 mkdir -p "$APPDIR/usr/share/glib-2.0/schemas"
 mkdir -p "$APPDIR/usr/share/icons/hicolor/scalable/apps"
+mkdir -p "$APPDIR/usr/share/icons/hicolor/symbolic/apps"
 mkdir -p "$APPDIR/usr/share/applications"
+mkdir -p "$APPDIR/usr/share/metainfo"
 
 cp "$BINARY" "$APPDIR/usr/bin/"
 chmod +x "$APPDIR/usr/bin/$APP_NAME"
@@ -43,8 +45,18 @@ glib-compile-schemas "$APPDIR/usr/share/glib-2.0/schemas/"
 
 cp "$INSTALL_PREFIX/share/icons/hicolor/scalable/apps/"*.svg \
    "$APPDIR/usr/share/icons/hicolor/scalable/apps/" 2>/dev/null || true
+cp "$INSTALL_PREFIX/share/icons/hicolor/symbolic/apps/"*.svg \
+   "$APPDIR/usr/share/icons/hicolor/symbolic/apps/" 2>/dev/null || true
+
 cp "$INSTALL_PREFIX/share/applications/"*.desktop \
    "$APPDIR/usr/share/applications/" 2>/dev/null || true
+
+if [ -f "$INSTALL_PREFIX/share/metainfo/io.github.oatbiscuit.bloom.metainfo.xml" ]; then
+    cp "$INSTALL_PREFIX/share/metainfo/io.github.oatbiscuit.bloom.metainfo.xml" \
+       "$APPDIR/usr/share/metainfo/"
+    cp "$APPDIR/usr/share/metainfo/io.github.oatbiscuit.bloom.metainfo.xml" \
+       "$APPDIR/usr/share/metainfo/io.github.oatbiscuit.bloom.appdata.xml"
+fi
 
 cat > "$APPDIR/AppRun" << 'EOF'
 #!/bin/bash
@@ -58,14 +70,23 @@ EOF
 chmod +x "$APPDIR/AppRun"
 
 cp "$APPDIR/usr/share/applications/"*.desktop "$APPDIR/" 2>/dev/null || true
-cp "$APPDIR/usr/share/icons/hicolor/scalable/apps/"*.svg "$APPDIR/" 2>/dev/null || true
+
+if command -v rsvg-convert >/dev/null 2>&1; then
+    rsvg-convert -w 256 -h 256 \
+        "$APPDIR/usr/share/icons/hicolor/scalable/apps/io.github.oatbiscuit.bloom.svg" \
+        -o "$APPDIR/io.github.oatbiscuit.bloom.png"
+elif command -v convert >/dev/null 2>&1; then
+    convert -background none \
+        "$APPDIR/usr/share/icons/hicolor/scalable/apps/io.github.oatbiscuit.bloom.svg" \
+        -resize 256x256 "$APPDIR/io.github.oatbiscuit.bloom.png"
+fi
 
 if [ -f "./appimagetool" ]; then
     APPIMAGETOOL="./appimagetool"
 elif command -v appimagetool >/dev/null 2>&1; then
     APPIMAGETOOL="appimagetool"
 else
-    wget -O appimagetool https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+    wget -O appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
     chmod +x appimagetool
     APPIMAGETOOL="./appimagetool"
 fi
