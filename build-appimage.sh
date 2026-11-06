@@ -65,19 +65,6 @@ if [ -f "$INSTALL_PREFIX/share/metainfo/io.github.oatbiscuit.bloom.metainfo.xml"
        "$APPDIR/usr/share/metainfo/io.github.oatbiscuit.bloom.appdata.xml"
 fi
 
-mkdir -p "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
-cp /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders/*.so \
-   "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/" 2>/dev/null || true
-
-GDK_PIXBUF_MODULE_FILE="$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache" \
-    gdk-pixbuf-query-loaders \
-    "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/"*.so \
-    > "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache" 2>/dev/null || true
-
-mkdir -p "$APPDIR/usr/lib/gio/modules"
-cp /usr/lib/x86_64-linux-gnu/gio/modules/*.so \
-   "$APPDIR/usr/lib/gio/modules/" 2>/dev/null || true
-
 cat > "$APPDIR/AppRun" << 'EOF'
 #!/bin/bash
 HERE="$(dirname "$(readlink -f "${0}")")"
@@ -86,11 +73,6 @@ export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
 export GSETTINGS_SCHEMA_DIR="${HERE}/usr/share/glib-2.0/schemas"
 export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 export GTK_DATA_PREFIX="${HERE}/usr"
-export GTK_THEME=Adwaita
-export GDK_PIXBUF_MODULE_FILE="${HERE}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
-export GDK_PIXBUF_MODULEDIR="${HERE}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
-export GIO_MODULE_DIR="${HERE}/usr/lib/gio/modules"
-
 exec "${HERE}/usr/bin/bloom" "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
