@@ -20,7 +20,8 @@ jobs:
           sudo apt update
           sudo apt install -y meson valac libgtk-4-dev libadwaita-1-dev \
           libsqlite3-dev libgee-0.8-dev blueprint-compiler \
-          gettext desktop-file-utils librsvg2-bin libxml2-utils libfuse2 wget
+          gettext desktop-file-utils librsvg2-bin libxml2-utils libfuse2 wget \
+          libgdk-pixbuf2.0-bin
 
           # Download appimagetool from GitHub Releases
           wget -O /tmp/appimagetool \
