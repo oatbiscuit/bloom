@@ -53,6 +53,7 @@ cp "$INSTALL_PREFIX/share/icons/hicolor/symbolic/apps/"*.svg \
 
 mkdir -p "$APPDIR/usr/share/icons"
 cp -r /usr/share/icons/Adwaita "$APPDIR/usr/share/icons/" 2>/dev/null || true
+gtk4-update-icon-cache -q -t -f "$APPDIR/usr/share/icons/Adwaita" 2>/dev/null || true
 
 cp "$INSTALL_PREFIX/share/applications/"*.desktop \
    "$APPDIR/usr/share/applications/" 2>/dev/null || true
@@ -64,14 +65,32 @@ if [ -f "$INSTALL_PREFIX/share/metainfo/io.github.oatbiscuit.bloom.metainfo.xml"
        "$APPDIR/usr/share/metainfo/io.github.oatbiscuit.bloom.appdata.xml"
 fi
 
+mkdir -p "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
+cp /usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders/*.so \
+   "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/" 2>/dev/null || true
+
+GDK_PIXBUF_MODULE_FILE="$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache" \
+    gdk-pixbuf-query-loaders \
+    "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/"*.so \
+    > "$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache" 2>/dev/null || true
+
+mkdir -p "$APPDIR/usr/lib/gio/modules"
+cp /usr/lib/x86_64-linux-gnu/gio/modules/*.so \
+   "$APPDIR/usr/lib/gio/modules/" 2>/dev/null || true
+
 cat > "$APPDIR/AppRun" << 'EOF'
 #!/bin/bash
 HERE="$(dirname "$(readlink -f "${0}")")"
 export PATH="${HERE}/usr/bin:${PATH}"
 export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
 export GSETTINGS_SCHEMA_DIR="${HERE}/usr/share/glib-2.0/schemas"
-# Add GTK_DATA_PREFIX and ensure XDG_DATA_DIRS points to our bundle
 export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+export GTK_DATA_PREFIX="${HERE}/usr"
+export GTK_THEME=Adwaita
+export GDK_PIXBUF_MODULE_FILE="${HERE}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
+export GDK_PIXBUF_MODULEDIR="${HERE}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
+export GIO_MODULE_DIR="${HERE}/usr/lib/gio/modules"
+
 exec "${HERE}/usr/bin/bloom" "$@"
 EOF
 chmod +x "$APPDIR/AppRun"
