@@ -50,6 +50,12 @@ cp "$INSTALL_PREFIX/share/icons/hicolor/scalable/apps/"*.svg \
 cp "$INSTALL_PREFIX/share/icons/hicolor/symbolic/apps/"*.svg \
    "$APPDIR/usr/share/icons/hicolor/symbolic/apps/" 2>/dev/null || true
 
+mkdir -p "$APPDIR/usr/share/icons"
+cp -r /usr/share/icons/Adwaita "$APPDIR/usr/share/icons/" 2>/dev/null || true
+if [ -d "$APPDIR/usr/share/icons/Adwaita" ]; then
+    gtk4-update-icon-cache -q -t -f "$APPDIR/usr/share/icons/Adwaita" 2>/dev/null || true
+fi
+
 cp "$INSTALL_PREFIX/share/applications/"*.desktop \
    "$APPDIR/usr/share/applications/" 2>/dev/null || true
 if [ -f "$INSTALL_PREFIX/share/metainfo/io.github.oatbiscuit.bloom.metainfo.xml" ]; then
