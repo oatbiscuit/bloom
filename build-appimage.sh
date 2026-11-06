@@ -74,6 +74,7 @@ export GSETTINGS_SCHEMA_DIR="${HERE}/usr/share/glib-2.0/schemas"
 export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
 exec "${HERE}/usr/bin/bloom" "$@"
 EOF
+chmod +x "$APPDIR/AppRun"
 
 cp "$APPDIR/usr/share/applications/"*.desktop "$APPDIR/" 2>/dev/null || true
 
