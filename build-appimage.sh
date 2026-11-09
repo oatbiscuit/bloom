@@ -78,8 +78,9 @@ if [ ! -x "$PIXBUF_QUERY" ]; then
 fi
 
 ( cd "$PIXBUF_TARGET_DIR" && "$PIXBUF_QUERY" *.so > loaders.cache )
-sed -i "s|$PIXBUF_TARGET_DIR/||g" "$PIXBUF_TARGET_DIR/loaders.cache"
-sed -i "s|$HOST_LOADERS/||g" "$PIXBUF_TARGET_DIR/loaders.cache"
+sed -i -E 's|"[^"]*/([^"/]+\.so)"|"\1"|g' "$PIXBUF_TARGET_DIR/loaders.cache"
+echo "--- loaders.cache content ---"
+head -5 "$PIXBUF_TARGET_DIR/loaders.cache"
 
 if [ ! -s "$PIXBUF_TARGET_DIR/loaders.cache" ]; then
     echo "Error: loaders.cache is empty or missing!"
