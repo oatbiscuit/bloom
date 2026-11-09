@@ -54,11 +54,31 @@ PIXBUF_MODULE_DIR="/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders"
 PIXBUF_TARGET_DIR="$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
 
 mkdir -p "$PIXBUF_TARGET_DIR"
-cp "$PIXBUF_MODULE_DIR"/*.so "$PIXBUF_TARGET_DIR/" 2>/dev/null || true
+
+HOST_LOADERS="/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders"
+if [ ! -d "$HOST_LOADERS" ]; then
+    HOST_LOADERS=$(find /usr/lib -type d -name "loaders" -path "*gdk-pixbuf*" | head -n 1)
+fi
+
+if [ -n "$HOST_LOADERS" ] && [ -d "$HOST_LOADERS" ]; then
+    cp "$HOST_LOADERS"/*.so "$PIXBUF_TARGET_DIR/" 2>/dev/null || true
+else
+    echo "Warning: Could not find gdk-pixbuf loaders on host."
+fi
 
 if command -v gdk-pixbuf-query-loaders >/dev/null 2>&1; then
     ( cd "$PIXBUF_TARGET_DIR" && gdk-pixbuf-query-loaders *.so > loaders.cache )
     sed -i "s|$PIXBUF_TARGET_DIR/||g" "$PIXBUF_TARGET_DIR/loaders.cache"
+    sed -i "s|$HOST_LOADERS/||g" "$PIXBUF_TARGET_DIR/loaders.cache"
+    
+    if [ ! -s "$PIXBUF_TARGET_DIR/loaders.cache" ]; then
+        echo "Error: loaders.cache is empty or missing!"
+        exit 1
+    fi
+    echo "Successfully generated loaders.cache"
+else
+    echo "Error: gdk-pixbuf-query-loaders not found."
+    exit 1
 fi
 
 mkdir -p "$APPDIR/usr/share/icons"
