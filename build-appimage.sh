@@ -50,6 +50,17 @@ cp "$INSTALL_PREFIX/share/icons/hicolor/scalable/apps/"*.svg \
 cp "$INSTALL_PREFIX/share/icons/hicolor/symbolic/apps/"*.svg \
    "$APPDIR/usr/share/icons/hicolor/symbolic/apps/" 2>/dev/null || true
 
+PIXBUF_MODULE_DIR="/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders"
+PIXBUF_TARGET_DIR="$APPDIR/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
+
+mkdir -p "$PIXBUF_TARGET_DIR"
+cp "$PIXBUF_MODULE_DIR"/*.so "$PIXBUF_TARGET_DIR/" 2>/dev/null || true
+
+if command -v gdk-pixbuf-query-loaders >/dev/null 2>&1; then
+    ( cd "$PIXBUF_TARGET_DIR" && gdk-pixbuf-query-loaders *.so > loaders.cache )
+    sed -i "s|$PIXBUF_TARGET_DIR/||g" "$PIXBUF_TARGET_DIR/loaders.cache"
+fi
+
 mkdir -p "$APPDIR/usr/share/icons"
 cp -r /usr/share/icons/Adwaita "$APPDIR/usr/share/icons/" 2>/dev/null || true
 if [ -d "$APPDIR/usr/share/icons/Adwaita" ]; then
@@ -72,9 +83,11 @@ export PATH="${HERE}/usr/bin:${PATH}"
 export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
 export GSETTINGS_SCHEMA_DIR="${HERE}/usr/share/glib-2.0/schemas"
 export XDG_DATA_DIRS="${HERE}/usr/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
-export GDK_PIXBUF_MODULEDIR="/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders"
+export GDK_PIXBUF_MODULEDIR="${HERE}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders"
+export GDK_PIXBUF_MODULE_FILE="${HERE}/usr/lib/gdk-pixbuf-2.0/2.10.0/loaders/loaders.cache"
 exec "${HERE}/usr/bin/bloom" "$@"
 EOF
+
 chmod +x "$APPDIR/AppRun"
 
 cp "$APPDIR/usr/share/applications/"*.desktop "$APPDIR/" 2>/dev/null || true
