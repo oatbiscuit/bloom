@@ -71,10 +71,18 @@ jobs:
       - name: Rename artifacts to include version and arch
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          mv artifacts/flatpak-bundle/bloom-x86_64.flatpak \
-             "artifacts/flatpak-bundle/bloom-${VERSION}-x86_64.flatpak"
-          mv artifacts/source-tarball/bloom-*.tar.xz \
-             "artifacts/source-tarball/bloom-${VERSION}-source.tar.xz"
+          FLATPAK=$(find artifacts/flatpak-bundle -name "*.flatpak")
+          if [ -z "$FLATPAK" ]; then
+            echo "Error: Flatpak bundle not found!"
+            exit 1
+          fi
+          mv "$FLATPAK" "artifacts/flatpak-bundle/bloom-${VERSION}-x86_64.flatpak"
+          TARBALL=$(find artifacts/source-tarball -name "bloom-*.tar.xz")
+          if [ -z "$TARBALL" ]; then
+            echo "Error: Source tarball not found!"
+            exit 1
+          fi
+          mv "$TARBALL" "artifacts/source-tarball/bloom-${VERSION}-source.tar.xz"
 
       - name: Upload to release
         uses: softprops/action-gh-release@v3
