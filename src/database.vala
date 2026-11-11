@@ -72,19 +72,18 @@ public class Bloom.Database : GLib.Object {
         """;
         db.exec (query, null, null);
 
-        // int current_version = get_user_version ();
+        int current_version = get_user_version ();
+        message ("Database version: %i", current_version);
 
         // if (current_version < 2) {
             // db.exec ("ALTER TABLE day_logs ADD COLUMN temperature REAL DEFAULT 0.0;", null, null);
-
             // set_user_version (2);
             // message ("Database upgraded to version 2");
         // }
     }
 
     public void save_log (string date, string column, int value) {
-        string query = @"INSERT INTO day_logs (date, $column) VALUES (?, ?)
-                         ON CONFLICT(date) DO UPDATE SET $column = excluded.$column;";
+        string query = @"INSERT INTO day_logs (date, $column) VALUES (?, ?) ON CONFLICT(date) DO UPDATE SET $column = excluded.$column;";
         Sqlite.Statement stmt;
 
         if (db.prepare_v2 (query, -1, out stmt) != Sqlite.OK) return;
@@ -109,8 +108,8 @@ public class Bloom.Database : GLib.Object {
     }
 
     public void save_temperature (string date, double value) {
-        string query = "INSERT INTO day_logs (date, temperature) VALUES (?, ?)
-                        ON CONFLICT(date) DO UPDATE SET temperature = excluded.temperature;";
+        string query = """INSERT INTO day_logs (date, temperature) VALUES (?, ?)
+                        ON CONFLICT(date) DO UPDATE SET temperature = excluded.temperature;""";
         Sqlite.Statement stmt;
         if (db.prepare_v2 (query, -1, out stmt) != Sqlite.OK) return;
         stmt.bind_text (1, date);
@@ -130,8 +129,8 @@ public class Bloom.Database : GLib.Object {
     }
 
     public void save_notes (string date, string value) {
-        string query = "INSERT INTO day_logs (date, notes) VALUES (?, ?)
-                        ON CONFLICT(date) DO UPDATE SET notes = excluded.notes;";
+        string query = """INSERT INTO day_logs (date, notes) VALUES (?, ?)
+                        ON CONFLICT(date) DO UPDATE SET notes = excluded.notes;""";
         Sqlite.Statement stmt;
         if (db.prepare_v2 (query, -1, out stmt) != Sqlite.OK) return;
         stmt.bind_text (1, date);
