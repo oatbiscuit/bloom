@@ -256,13 +256,19 @@ public class Bloom.Window : Adw.ApplicationWindow {
             return;
         }
         
-        int period_length = engine.get_median_period_length ();
-        int cycle_length = engine.get_median_cycle_length ();
-        
-        int luteal_length = settings.get_int ("custom-luteal-phase");
-        if (luteal_length <= 0) luteal_length = 14;
-        
-        string phase = get_cycle_phase (cycle_day, period_length, cycle_length, luteal_length);
+        bool is_actually_bleeding = is_period_day (today);
+        string phase;
+
+        if (is_actually_bleeding) {
+            phase = _("Menstruation");
+        } else {
+            int period_length = engine.get_median_period_length ();
+            int cycle_length = engine.get_median_cycle_length ();
+            int luteal_length = settings.get_int ("custom-luteal-phase");
+            if (luteal_length <= 0) luteal_length = 14;
+
+            phase = get_cycle_phase (cycle_day, period_length, cycle_length, luteal_length);
+        }
 
         cycle_day_row.subtitle = _(@"Day $cycle_day ($phase)");
 
