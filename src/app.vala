@@ -74,7 +74,7 @@ public class Bloom.Application : Adw.Application {
             application_icon = "io.github.oatbiscuit.bloom",
             developer_name = "oatbiscuit",
             translator_credits = _("translator-credits"),
-            version = "1.0.0",
+            version = "1.0.1",
             developers = developers,
             copyright = "© 2026 oatbiscuit",
         };

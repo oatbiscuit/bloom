@@ -79,14 +79,11 @@
   </screenshots>
 
   <releases>
-    <release version="1.0.0" date="2026-11-05">
+    <release version="1.0.1" date="2026-11-11">
       <description>
-        <p>Initial release of Bloom!</p>
+        <p>Bug fix release</p>
         <ul>
-          <li>Custom GTK4 calendar with period and ovulation predictions</li>
-          <li>Detailed daily logging (symptoms, BBT, OPK, CM, notes)</li>
-          <li>Insights page with average and median cycle stats</li>
-          <li>Local SQLite database for maximum privacy</li>
+          <li>Fix phase label showing "Follicular" instead of "Menstruation" when a period is still active</li>
         </ul>
       </description>
     </release>
