@@ -44,7 +44,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y meson valac blueprint-compiler \
             libgtk-4-dev libadwaita-1-dev libsqlite3-dev libgee-0.8-dev \
-            libglib2.0-dev
+            libglib2.0-dev gettext
 
       - name: Generate source tarball
         run: |
