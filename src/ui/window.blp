@@ -77,16 +77,22 @@ template $BloomWindow : Adw.ApplicationWindow {
                 styles ["title-4"]
               }
 
-              Grid calendar_grid {
-                hexpand: true;
-                vexpand: false;
-                column-homogeneous: true;
-                row-homogeneous: true;
-                column-spacing: 2;
-                row-spacing: 2;
+              Adw.Bin {
+                styles ["card"]
+
+                Grid calendar_grid {
+                  hexpand: true;
+                  vexpand: false;
+                  column-homogeneous: true;
+                  row-homogeneous: true;
+                  column-spacing: 2;
+                  row-spacing: 2;
+                }
               }
 
               Adw.PreferencesGroup {
+                title: _("Cycle");
+
                 Adw.ActionRow cycle_day_row {
                   title: _("Current Cycle Day");
                 }
@@ -115,6 +121,7 @@ template $BloomWindow : Adw.ApplicationWindow {
               margin-bottom: 24;
 
               Adw.PreferencesPage {
+                title: _("Cycle Insights");
                 Adw.PreferencesGroup {
                   title: _("Yearly Heatmap");
 
@@ -217,6 +224,7 @@ template $BloomWindow : Adw.ApplicationWindow {
                   vscrollbar-policy: automatic;
 
                   Adw.PreferencesGroup notes_group {
+                    title: _("View your notes");
                   }
                 }
               }

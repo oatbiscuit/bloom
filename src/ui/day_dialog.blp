@@ -21,6 +21,7 @@ template $BloomDayDialog : Adw.Dialog {
     }
 
     Adw.PreferencesPage {
+      title: _("Log Period");
       Adw.PreferencesGroup {
         title: _("Cycle");
 
@@ -64,9 +65,10 @@ template $BloomDayDialog : Adw.Dialog {
           adjustment: Adjustment {
             lower: 34.0;
             upper: 42.0;
-            step-increment: 0.1;
+            value: 36.4;
+            step-increment: 0.01;
           };
-          digits: 1;
+          digits: 2;
           editable: true;
         }
 

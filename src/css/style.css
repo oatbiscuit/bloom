@@ -1,18 +1,9 @@
 .calendar_grid {
-    background-color: white;
-    border-radius: 12px;
-    padding: 16px;
-
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.03),
-        0 2px 4px rgba(0, 0, 0, 0.03);
-
-    border: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 12px;
 }
 
 .calendar_grid button {
-    border-radius: 3px;
-    margin: 2px;
+    border-radius: 50%;
 }
 
 .calendar_grid button:hover {
