@@ -1,0 +1,85 @@
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  flatpak:
+    name: Build Flatpak
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-51
+      options: --privileged
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Build Flatpak
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
+        with:
+          bundle: bloom-x86_64.flatpak
+          manifest-path: io.github.oatbiscuit.bloom.json
+          cache-key: flatpak-builder-${{ github.sha }}
+
+      - name: Upload Flatpak artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: flatpak-bundle
+          path: bloom-x86_64.flatpak
+
+  source-tarball:
+    name: Build Source Tarball
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y meson valac blueprint-compiler \
+            libgtk-4-dev libadwaita-1-dev libsqlite3-dev libgee-0.8-dev \
+            libglib2.0-dev
+
+      - name: Generate source tarball
+        run: |
+          meson setup build-dist
+          meson dist -C build-dist --no-tests
+
+      - name: Upload source tarball artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: source-tarball
+          path: build-dist/meson-dist/*.tar.xz
+
+  release:
+    name: Publish Release
+    needs: [flatpak, source-tarball]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+
+      - name: Rename artifacts to include version and arch
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          mv artifacts/flatpak-bundle/bloom-x86_64.flatpak \
+             "artifacts/flatpak-bundle/bloom-${VERSION}-x86_64.flatpak"
+          mv artifacts/source-tarball/bloom-*.tar.xz \
+             "artifacts/source-tarball/bloom-${VERSION}-source.tar.xz"
+
+      - name: Upload to release
+        uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            artifacts/flatpak-bundle/*.flatpak
+            artifacts/source-tarball/*.tar.xz
+          draft: false
