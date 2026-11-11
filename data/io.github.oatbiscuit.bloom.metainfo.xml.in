@@ -79,11 +79,12 @@
   </screenshots>
 
   <releases>
-    <release version="1.0.1" date="2026-11-11">
+    <release version="1.0.2" date="2026-11-11">
       <description>
         <p>Bug fix release</p>
         <ul>
-          <li>Fix phase label showing "Follicular" instead of "Menstruation" when a period is still active</li>
+          <li>Fix styles and blueprint</li>
+          <li>Fix database</li>
         </ul>
       </description>
     </release>
