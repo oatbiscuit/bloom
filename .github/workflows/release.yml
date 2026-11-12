@@ -66,6 +66,54 @@ jobs:
           name: source-tarball
           path: build-dist/meson-dist/*.tar.xz
 
+  rpm:
+    name: Build RPM
+    needs: [source-tarball]
+    runs-on: ubuntu-26.04
+    container:
+      image: fedora:latest
+      options: --privileged
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Install build dependencies
+        run: |
+          dnf install -y rpm-build rpmdevtools tar gzip meson valac blueprint-compiler \
+            gtk4-devel libadwaita-devel sqlite-devel libgee-devel glib2-devel \
+            desktop-file-utils gettext
+
+      - name: Download source tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: source-tarball
+          path: artifacts
+
+      - name: Build RPM
+        run: |
+          rpmdev-setuptree
+          VERSION="${GITHUB_REF_NAME#v}"
+
+          TARBALL=$(find artifacts -name "bloom-*.tar.xz")
+          if [ -z "$TARBALL" ]; then
+            echo "Error: Source tarball not found!"
+            exit 1
+          fi
+
+          cp "$TARBALL" ~/rpmbuild/SOURCES/bloom-${VERSION}.tar.xz
+          cp bloom.spec ~/rpmbuild/SPECS/
+
+          rpmbuild -bb \
+            --define "version ${VERSION}" \
+            --define "_sourcedir ~/rpmbuild/SOURCES" \
+            ~/rpmbuild/SPECS/bloom.spec
+
+      - name: Upload RPM artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: rpm-package
+          path: ~/rpmbuild/RPMS/**/*.rpm
+
   release:
     name: Publish Release
     needs: [flatpak, source-tarball]
