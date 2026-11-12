@@ -81,7 +81,7 @@ jobs:
         run: |
           dnf install -y rpm-build rpmdevtools tar gzip meson valac blueprint-compiler \
             gtk4-devel libadwaita-devel sqlite-devel libgee-devel glib2-devel \
-            desktop-file-utils gettext
+            desktop-file-utils gettext libappstream-glib
 
       - name: Download source tarball
         uses: actions/download-artifact@v8
