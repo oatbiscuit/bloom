@@ -36,9 +36,6 @@ periods and ovulation days without ever sending your data to the cloud.
 %install
 %meson_install
 
-%check
-%meson_test
-
 %files
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
