@@ -43,7 +43,7 @@
     <keyword>cycle</keyword>
   </keywords>
 
-  <icon type="stock">io.github.oatbiscuit.bloom</icon>
+  <icon>io.github.oatbiscuit.bloom</icon>
 
   <branding>
     <color type="primary" scheme_preference="light">#9141ac</color>
