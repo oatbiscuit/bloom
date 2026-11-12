@@ -100,13 +100,13 @@ jobs:
             exit 1
           fi
 
-          cp "$TARBALL" ~/rpmbuild/SOURCES/bloom-${VERSION}.tar.xz
-          cp bloom.spec ~/rpmbuild/SPECS/
+          cp "$TARBALL" "$HOME/rpmbuild/SOURCES/bloom-${VERSION}.tar.xz"
+          cp bloom.spec "$HOME/rpmbuild/SPECS/"
 
           rpmbuild -bb \
             --define "version ${VERSION}" \
-            --define "_sourcedir ~/rpmbuild/SOURCES" \
-            ~/rpmbuild/SPECS/bloom.spec
+            --define "_sourcedir $HOME/rpmbuild/SOURCES" \
+            "$HOME/rpmbuild/SPECS/bloom.spec"
 
       - name: Upload RPM artifact
         uses: actions/upload-artifact@v7
