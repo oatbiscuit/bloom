@@ -116,7 +116,7 @@ jobs:
 
   release:
     name: Publish Release
-    needs: [flatpak, source-tarball]
+    needs: [flatpak, source-tarball, rpm]
     runs-on: ubuntu-26.04
     if: startsWith(github.ref, 'refs/tags/')
     steps:
@@ -145,4 +145,5 @@ jobs:
             artifacts/flatpak-bundle-x86_64/*.flatpak
             artifacts/flatpak-bundle-aarch64/*.flatpak
             artifacts/source-tarball/*.tar.xz
+            artifacts/rpm-package/*.rpm
           draft: false
