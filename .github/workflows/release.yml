@@ -10,8 +10,16 @@ permissions:
 
 jobs:
   flatpak:
-    name: Build Flatpak
-    runs-on: ubuntu-26.04
+    name: Build Flatpak (${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-26.04
+          - arch: aarch64
+            runner: ubuntu-26.04-arm
     container:
       image: ghcr.io/flathub-infra/flatpak-github-actions:gnome-51
       options: --privileged
@@ -22,15 +30,16 @@ jobs:
       - name: Build Flatpak
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
-          bundle: bloom-x86_64.flatpak
+          bundle: bloom-${{ matrix.arch }}.flatpak
           manifest-path: io.github.oatbiscuit.bloom.json
-          cache-key: flatpak-builder-${{ github.sha }}
+          cache-key: flatpak-builder-${{ github.sha }}-${{ matrix.arch }}
+          arch: ${{ matrix.arch }}
 
       - name: Upload Flatpak artifact
         uses: actions/upload-artifact@v7
         with:
-          name: flatpak-bundle
-          path: bloom-x86_64.flatpak
+          name: flatpak-bundle-${{ matrix.arch }}
+          path: bloom-${{ matrix.arch }}.flatpak
 
   source-tarball:
     name: Build Source Tarball
@@ -71,23 +80,21 @@ jobs:
       - name: Rename artifacts to include version and arch
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
-          FLATPAK=$(find artifacts/flatpak-bundle -name "*.flatpak")
-          if [ -z "$FLATPAK" ]; then
-            echo "Error: Flatpak bundle not found!"
-            exit 1
-          fi
-          mv "$FLATPAK" "artifacts/flatpak-bundle/bloom-${VERSION}-x86_64.flatpak"
+
+          mv artifacts/flatpak-bundle-x86_64/bloom-x86_64.flatpak \
+             "artifacts/flatpak-bundle-x86_64/bloom-${VERSION}-x86_64.flatpak"
+
+          mv artifacts/flatpak-bundle-aarch64/bloom-aarch64.flatpak \
+             "artifacts/flatpak-bundle-aarch64/bloom-${VERSION}-aarch64.flatpak"
+
           TARBALL=$(find artifacts/source-tarball -name "bloom-*.tar.xz")
-          if [ -z "$TARBALL" ]; then
-            echo "Error: Source tarball not found!"
-            exit 1
-          fi
           mv "$TARBALL" "artifacts/source-tarball/bloom-${VERSION}-source.tar.xz"
 
       - name: Upload to release
         uses: softprops/action-gh-release@v3
         with:
           files: |
-            artifacts/flatpak-bundle/*.flatpak
+            artifacts/flatpak-bundle-x86_64/*.flatpak
+            artifacts/flatpak-bundle-aarch64/*.flatpak
             artifacts/source-tarball/*.tar.xz
           draft: false
