@@ -1,0 +1,650 @@
+msgid ""
+msgstr "Last-Translator: Automatically generated\n"
+
+#: data/io.github.oatbiscuit.bloom.desktop.in:2
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:8 src/ui/window.blp:5
+#: src/app.vala:69
+msgid "Bloom"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.desktop.in:3
+msgid "Health Tracker"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.desktop.in:4 src/app.vala:70
+msgid "Track your menstrual cycle and symptoms"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.desktop.in:10
+msgid "period;menstruation;health;tracker;cycle;"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:9
+msgid "Bloom is a private and native cycle tracker"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:16
+msgid ""
+"Bloom is a private and native cycle tracker. It helps you understand your "
+"body's patterns by predicting upcoming periods and ovulation days without "
+"ever sending your data to the cloud."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:17
+msgid "Features:"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:19
+msgid ""
+"Predict upcoming periods and ovulation days using a rolling median of your "
+"last 6 cycles."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:20
+msgid ""
+"Log basal body temperature, cervical mucus, and ovulation test (OPK) results."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:21
+msgid "Keep track of physical symptoms and daily notes."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:22
+msgid ""
+"View personalised insights, including your average cycle length and "
+"regularity."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:23
+msgid ""
+"All data is stored locally on your device using SQLite. No accounts, no "
+"clouds, no tracking."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:61
+msgid "Track your cycle with the calendar"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:65
+msgid "Log detailed symptoms and body signs"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:69
+msgid "View insights and cycle regularity"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:73
+msgid "View and search your daily notes"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:77
+msgid "Change default settings and import/export data"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:6
+msgid "Custom Cycle Length"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:7
+msgid ""
+"Set to 0 to use the rolling median. Set to a number (15-60) to override."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:11
+msgid "Custom Period Length"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:12
+msgid "Set to 0 to use the rolling median. Set to a number (1-14) to override."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:16
+msgid "Custom Luteal Phase Length"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:17
+msgid "The number of days between ovulation and the next period."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:21
+msgid "Week Start Day"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:22
+msgid "Which day the week starts on (monday or sunday)."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:27
+msgid "Last Period Reminder"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:28
+msgid "The date (YYYY-MM-DD) when the last period reminder was sent."
+msgstr ""
+
+#: src/ui/day_dialog.blp:13
+msgid "Clear Day"
+msgstr ""
+
+#: src/ui/day_dialog.blp:19 src/ui/day_dialog.blp:24
+msgid "Log Period"
+msgstr ""
+
+#: src/ui/day_dialog.blp:26 src/ui/window.blp:94
+msgid "Cycle"
+msgstr ""
+
+#: src/ui/day_dialog.blp:29 src/window.vala:204
+msgid "Period Day"
+msgstr ""
+
+#: src/ui/day_dialog.blp:30
+msgid "Mark this day as a bleeding day"
+msgstr ""
+
+#: src/ui/day_dialog.blp:34
+msgid "Flow"
+msgstr ""
+
+#: src/ui/day_dialog.blp:37
+msgid "None"
+msgstr ""
+
+#: src/ui/day_dialog.blp:38
+msgid "Spotting"
+msgstr ""
+
+#: src/ui/day_dialog.blp:39
+msgid "Light"
+msgstr ""
+
+#: src/ui/day_dialog.blp:40
+msgid "Medium"
+msgstr ""
+
+#: src/ui/day_dialog.blp:41
+msgid "Heavy"
+msgstr ""
+
+#: src/ui/day_dialog.blp:48
+msgid "Body"
+msgstr ""
+
+#: src/ui/day_dialog.blp:51
+msgid "Ovulation Test (OPK)"
+msgstr ""
+
+#: src/ui/day_dialog.blp:54 src/ui/day_dialog.blp:79
+msgid "Not Logged"
+msgstr ""
+
+#: src/ui/day_dialog.blp:55
+msgid "Negative"
+msgstr ""
+
+#: src/ui/day_dialog.blp:56
+msgid "Positive (LH Surge)"
+msgstr ""
+
+#: src/ui/day_dialog.blp:57
+msgid "Peak"
+msgstr ""
+
+#: src/ui/day_dialog.blp:63
+msgid "Basal Temperature (BBT)"
+msgstr ""
+
+#: src/ui/day_dialog.blp:64
+msgid "in celsius (C)"
+msgstr ""
+
+#: src/ui/day_dialog.blp:76
+msgid "Cervical Mucus (CM)"
+msgstr ""
+
+#: src/ui/day_dialog.blp:80
+msgid "Dry / None"
+msgstr ""
+
+#: src/ui/day_dialog.blp:81
+msgid "Sticky"
+msgstr ""
+
+#: src/ui/day_dialog.blp:82
+msgid "Creamy"
+msgstr ""
+
+#: src/ui/day_dialog.blp:83
+msgid "Egg White / Stretchy"
+msgstr ""
+
+#: src/ui/day_dialog.blp:90 src/ui/day_dialog.blp:93 src/ui/window.blp:198
+msgid "Notes"
+msgstr ""
+
+#: src/ui/day_dialog.blp:98
+msgid "Symptoms"
+msgstr ""
+
+#: src/ui/day_dialog.blp:101
+msgid "Cramps"
+msgstr ""
+
+#: src/ui/day_dialog.blp:105
+msgid "Bloating"
+msgstr ""
+
+#: src/ui/day_dialog.blp:109
+msgid "Breast Tenderness"
+msgstr ""
+
+#: src/ui/day_dialog.blp:113
+msgid "Fatigue"
+msgstr ""
+
+#: src/ui/day_dialog.blp:117
+msgid "Headache"
+msgstr ""
+
+#: src/ui/day_dialog.blp:121
+msgid "Mood Changes"
+msgstr ""
+
+#: src/ui/day_dialog.blp:125
+msgid "Cravings"
+msgstr ""
+
+#: src/ui/preferences.blp:5 src/ui/preferences.blp:8 src/ui/window.blp:243
+msgid "Preferences"
+msgstr ""
+
+#: src/ui/preferences.blp:11 src/ui/window.blp:61
+msgid "Calendar"
+msgstr ""
+
+#: src/ui/preferences.blp:14
+msgid "Week Starts On"
+msgstr ""
+
+#: src/ui/preferences.blp:22
+msgid "Cycle Overrides"
+msgstr ""
+
+#: src/ui/preferences.blp:25
+msgid "Cycle Length"
+msgstr ""
+
+#: src/ui/preferences.blp:26 src/ui/preferences.blp:37
+msgid "Set to 0 to use automated predictions"
+msgstr ""
+
+#: src/ui/preferences.blp:36
+msgid "Period Length"
+msgstr ""
+
+#: src/ui/preferences.blp:47
+msgid "Luteal Phase Length"
+msgstr ""
+
+#: src/ui/preferences.blp:48
+msgid "Days between ovulation and next period"
+msgstr ""
+
+#: src/ui/preferences.blp:59
+msgid "Data and Privacy"
+msgstr ""
+
+#: src/ui/preferences.blp:60
+msgid "Your data is stored locally on this device."
+msgstr ""
+
+#: src/ui/preferences.blp:63
+msgid "Database Location"
+msgstr ""
+
+#: src/ui/preferences.blp:69
+msgid "Copy Path"
+msgstr ""
+
+#: src/ui/preferences.blp:74
+msgid "Export Data"
+msgstr ""
+
+#: src/ui/preferences.blp:75
+msgid "Save your logs to a CSV file"
+msgstr ""
+
+#: src/ui/preferences.blp:87
+msgid "Import Data"
+msgstr ""
+
+#: src/ui/preferences.blp:88
+msgid "Restore your logs from a CSV file"
+msgstr ""
+
+#: src/ui/preferences.blp:100 src/ui/preferences.blp:107
+msgid "Delete All Data"
+msgstr ""
+
+#: src/ui/preferences.blp:101
+msgid "WARNING: This action cannot be undone."
+msgstr ""
+
+#: src/ui/window.blp:17
+msgid "Previous Month"
+msgstr ""
+
+#: src/ui/window.blp:23
+msgid "Next Month"
+msgstr ""
+
+#: src/ui/window.blp:29
+msgid "Jump to Date"
+msgstr ""
+
+#: src/ui/window.blp:49
+msgid "Main Menu"
+msgstr ""
+
+#: src/ui/window.blp:97
+msgid "Current Cycle Day"
+msgstr ""
+
+#: src/ui/window.blp:101
+msgid "Next Period Date"
+msgstr ""
+
+#: src/ui/window.blp:110
+msgid "Insights"
+msgstr ""
+
+#: src/ui/window.blp:124
+msgid "Cycle Insights"
+msgstr ""
+
+#: src/ui/window.blp:126
+msgid "Yearly Heatmap"
+msgstr ""
+
+#: src/ui/window.blp:144
+msgid "Cycle Overview"
+msgstr ""
+
+#: src/ui/window.blp:147
+msgid "Average Cycle Length"
+msgstr ""
+
+#: src/ui/window.blp:150
+msgid "Median Cycle Length"
+msgstr ""
+
+#: src/ui/window.blp:153
+msgid "Average Period Length"
+msgstr ""
+
+#: src/ui/window.blp:156
+msgid "Median Period Length"
+msgstr ""
+
+#: src/ui/window.blp:161
+msgid "Cycle Health"
+msgstr ""
+
+#: src/ui/window.blp:164
+msgid "Regularity"
+msgstr ""
+
+#: src/ui/window.blp:165
+msgid "Based on your last 6 cycles"
+msgstr ""
+
+#: src/ui/window.blp:168 src/cycle_engine.vala:333 src/window.vala:342
+msgid "Not enough data"
+msgstr ""
+
+#: src/ui/window.blp:174
+msgid "All-Time Stats"
+msgstr ""
+
+#: src/ui/window.blp:177
+msgid "All-Time Average Cycle"
+msgstr ""
+
+#: src/ui/window.blp:181
+msgid "All-Time Average Period"
+msgstr ""
+
+#: src/ui/window.blp:186
+msgid "History"
+msgstr ""
+
+#: src/ui/window.blp:188
+msgid "Total Cycles Tracked"
+msgstr ""
+
+#: src/ui/window.blp:218
+msgid "Search your notes"
+msgstr ""
+
+#: src/ui/window.blp:227
+msgid "View your notes"
+msgstr ""
+
+#: src/ui/window.blp:247
+msgid "About"
+msgstr ""
+
+#: src/app.vala:76
+msgid "translator-credits"
+msgstr ""
+
+#: src/app.vala:83
+msgid "Medical Disclaimer"
+msgstr ""
+
+#: src/app.vala:84
+msgid ""
+"Bloom is a wellness tracker intended for personal awareness only. It is not "
+"a medical application and should not be used as a method of contraception or "
+"for medical diagnosis. The predictions provided are estimates based on "
+"historical data and should not replace professional medical advice."
+msgstr ""
+
+#: src/app.vala:143 src/app.vala:146
+msgid "Period Approaching"
+msgstr ""
+
+#: src/app.vala:144
+msgid "Your period is due in 2 days."
+msgstr ""
+
+#: src/app.vala:147
+msgid "Your period is due tomorrow."
+msgstr ""
+
+#: src/app.vala:149
+msgid "Period Expected Today"
+msgstr ""
+
+#: src/app.vala:150
+msgid "Your period is predicted to start today."
+msgstr ""
+
+#: src/cycle_engine.vala:341 src/window.vala:321
+msgid "Very Regular"
+msgstr ""
+
+#: src/cycle_engine.vala:343 src/window.vala:324
+msgid "Regular"
+msgstr ""
+
+#: src/cycle_engine.vala:345 src/window.vala:326
+msgid "Irregular"
+msgstr ""
+
+#: src/day_dialog.vala:62
+msgid "Clear this day?"
+msgstr ""
+
+#: src/day_dialog.vala:63
+msgid "This will permanently erase all data logged for this date."
+msgstr ""
+
+#: src/day_dialog.vala:66 src/preferences.vala:162
+msgid "Cancel"
+msgstr ""
+
+#: src/day_dialog.vala:67
+msgid "Clear"
+msgstr ""
+
+#: src/preferences.vala:90
+msgid "Save CSV File"
+msgstr ""
+
+#: src/preferences.vala:101
+msgid "Export Successful"
+msgstr ""
+
+#: src/preferences.vala:102
+msgid "Your data has been saved."
+msgstr ""
+
+#: src/preferences.vala:104 src/preferences.vala:140 src/preferences.vala:176
+msgid "OK"
+msgstr ""
+
+#: src/preferences.vala:116
+msgid "Import CSV File"
+msgstr ""
+
+#: src/preferences.vala:120
+msgid "CSV Files"
+msgstr ""
+
+#: src/preferences.vala:137
+msgid "Import Successful"
+msgstr ""
+
+#: src/preferences.vala:137
+msgid "Import Failed"
+msgstr ""
+
+#: src/preferences.vala:138
+msgid "Your data has been imported."
+msgstr ""
+
+#: src/preferences.vala:158
+msgid "Delete All Data?"
+msgstr ""
+
+#: src/preferences.vala:159
+msgid ""
+"This will permanently erase all your logged cycles and symptoms. This action "
+"cannot be undone."
+msgstr ""
+
+#: src/preferences.vala:163
+msgid "Delete"
+msgstr ""
+
+#: src/preferences.vala:173
+msgid "Data Deleted"
+msgstr ""
+
+#: src/preferences.vala:174
+msgid "All your data has been successfully removed."
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Sun"
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Mon"
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Tues"
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Wed"
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Thu"
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Fri"
+msgstr ""
+
+#: src/window.vala:149 src/window.vala:151
+msgid "Sat"
+msgstr ""
+
+#: src/window.vala:207
+msgid "Predicted Period"
+msgstr ""
+
+#: src/window.vala:212
+msgid "Predicted Ovulation"
+msgstr ""
+
+#: src/window.vala:217
+msgid "Today"
+msgstr ""
+
+#: src/window.vala:254
+msgid "No data logged yet"
+msgstr ""
+
+#: src/window.vala:255
+msgid "Log your first period to see predictions"
+msgstr ""
+
+#: src/window.vala:263 src/window.vala:414
+msgid "Menstruation"
+msgstr ""
+
+#: src/window.vala:282
+msgid "Expected. Log it when it starts."
+msgstr ""
+
+#: src/window.vala:284
+msgid "Expected today"
+msgstr ""
+
+#: src/window.vala:289
+msgid "Unknown"
+msgstr ""
+
+#: src/window.vala:335 src/window.vala:336 src/window.vala:337
+#: src/window.vala:338 src/window.vala:339 src/window.vala:340
+msgid "No data yet"
+msgstr ""
+
+#: src/window.vala:341
+msgid "0"
+msgstr ""
+
+#: src/window.vala:361
+msgid "No notes found"
+msgstr ""
+
+#: src/window.vala:362
+msgid "Try a different search term."
+msgstr ""
+
+#: src/window.vala:416
+msgid "Follicular"
+msgstr ""
+
+#: src/window.vala:418
+msgid "Ovulation"
+msgstr ""
+
+#: src/window.vala:420
+msgid "Luteal"
+msgstr ""

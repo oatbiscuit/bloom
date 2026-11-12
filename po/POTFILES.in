@@ -1,5 +1,5 @@
 data/io.github.oatbiscuit.bloom.desktop.in
-data/io.github.oatbiscuit.bloom.appdata.xml.in
+data/io.github.oatbiscuit.bloom.metainfo.xml.in
 data/io.github.oatbiscuit.bloom.gschema.xml
 src/ui/day_dialog.blp
 src/ui/preferences.blp
