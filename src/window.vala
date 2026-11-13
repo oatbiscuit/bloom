@@ -45,6 +45,7 @@ public class Bloom.Window : Adw.ApplicationWindow {
     [GtkChild] private unowned Gtk.Label regularity_label;
     
     [GtkChild] private unowned Gtk.SearchEntry search_notes_entry;
+    [GtkChild] private unowned Adw.StatusPage empty_page;
     [GtkChild] private unowned Adw.PreferencesGroup notes_group;
 
     private GLib.DateTime current_month;
@@ -357,14 +358,21 @@ public class Bloom.Window : Adw.ApplicationWindow {
         var notes_map = db.search_notes (search_term);
 
         if (notes_map.size == 0) {
-            var empty_row = new Adw.ActionRow () {
-                title = _("No notes found"),
-                subtitle = _("Try a different search term.")
-            };
-            notes_group.add (empty_row);
-            note_rows.add (empty_row);
+            empty_page.visible = true;
+            notes_group.visible = false;
+
+            if (search_term != "") {
+                empty_page.title = _("No matching notes");
+                empty_page.description = _("Try a different search term.");
+            } else {
+                empty_page.title = _("No notes yet");
+                empty_page.description = _("Your notes will appear here. Click a day on the calendar to add a note.");
+            }
             return;
         }
+
+        empty_page.visible = false;
+        notes_group.visible = true;
 
         foreach (var entry in notes_map.entries) {
             string date_str = entry.key;

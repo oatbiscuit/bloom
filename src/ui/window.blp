@@ -223,8 +223,22 @@ template $BloomWindow : Adw.ApplicationWindow {
                   hscrollbar-policy: never;
                   vscrollbar-policy: automatic;
 
-                  Adw.PreferencesGroup notes_group {
-                    title: _("View your notes");
+                  Box notes_container {
+                    hexpand: true;
+                    vexpand: true;
+
+                    Adw.StatusPage empty_page {
+                      hexpand: true;
+                      vexpand: true;
+                      icon-name: "document-edit-symbolic";
+                      title: _("No notes yet");
+                      description: _("Your notes will appear here. Click a day on the calendar to add a note.");
+                    }
+
+                    Adw.PreferencesGroup notes_group {
+                      title: _("View your notes");
+                      visible: false;
+                    }
                   }
                 }
               }
