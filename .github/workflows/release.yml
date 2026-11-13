@@ -151,5 +151,5 @@ jobs:
             artifacts/flatpak-bundle-x86_64/*.flatpak
             artifacts/flatpak-bundle-aarch64/*.flatpak
             artifacts/source-tarball/*.tar.xz
-            artifacts/rpm-package/*.rpm
+            artifacts/rpm-package/**/*.rpm
           draft: false
