@@ -13,25 +13,69 @@
 - background reminders: sends you a notification 2 days, 1 day, and on the day your period is predicted to start.
 
 ## screenshots
-
 <img src="https://raw.githubusercontent.com/oatbiscuit/bloom/main/data/screenshots/calendar.png">
 <img src="https://raw.githubusercontent.com/oatbiscuit/bloom/main/data/screenshots/dialog.png">
 <img src="https://raw.githubusercontent.com/oatbiscuit/bloom/main/data/screenshots/insights.png">
 
 ## installation
-
 ### flatpak (recommended)
 you can download the latest `.flatpak` bundle from the [Releases](https://github.com/oatbiscuit/bloom/releases/latest) page.
 
 to install it via the terminal:
 
 ```bash
-flatpak install bloom.flatpak
+flatpak install --user bloom-<version>-<arch>.flatpak
+```
+
+You can also double click the `*.flatpak` and install via GNOME Software or KDE Discover, if you don't want to use the terminal.
+
+### rpm (Fedora/RHEL)
+you can find the latest rpm from the [Releases](https://github.com/oatbiscuit/bloom/releases/latest) page.
+
+to install, use:
+
+```bash
+sudo dnf install ./bloom-<version>-1.<dist>.<arch>.rpm
+```
+
+### build from source
+#### dependencies:
+**Fedora**
+```bash
+sudo dnf install meson valac blueprint-compiler gettext \
+  gtk4-devel libadwaita-devel sqlite-devel libgee-devel \
+  glib2-devel desktop-file-utils appstream
+```
+
+**Ubuntu/Debian**
+```bash
+sudo apt install meson valac blueprint-compiler gettext \
+  libgtk-4-dev libadwaita-1-dev libsqlite3-dev libgee-0.8-dev \
+  libglib2.0-dev desktop-file-utils appstream
+```
+
+#### download
+download and extract the `*-source.tar.xz` file from the [Releases](https://github.com/oatbiscuit/bloom/releases/latest) page.
+
+#### build
+inside the root folder, run:
+```bash
+meson setup build
+meson compile -C build
+```
+
+#### install
+```bash
+sudo meson install -C build
+```
+
+#### uninstall
+```bash
+sudo ninja -C build uninstall
 ```
 
 ## medical disclaimer
 bloom is a wellness tracker intended for personal awareness only. It is not a medical application and should not be used as a method of contraception or for medical diagnosis. The predictions provided are estimates based on historical data and should not replace professional medical advice.
 
 ## license
-
 this project is licensed under the GPL-3.0-or-later License. see the [COPYING](https://raw.githubusercontent.com/oatbiscuit/bloom/refs/heads/main/COPYING) file for details.
