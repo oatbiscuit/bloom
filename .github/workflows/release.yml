@@ -89,12 +89,18 @@ jobs:
           name: source-tarball
           path: artifacts
 
+      - name: Inspect tarball
+        run: |
+          TARBALL=$(find artifacts/source-tarball -name "bloom-*.tar.xz")
+          echo "Tarball: $TARBALL"
+          tar -tf "$TARBALL" | head -5
+
       - name: Build RPM
         run: |
           rpmdev-setuptree
           VERSION="${GITHUB_REF_NAME#v}"
 
-          TARBALL=$(find artifacts -name "bloom-*.tar.xz")
+          TARBALL=$(find artifacts/source-tarball -name "bloom-*.tar.xz")
           if [ -z "$TARBALL" ]; then
             echo "Error: Source tarball not found!"
             exit 1
