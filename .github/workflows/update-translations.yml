@@ -1,0 +1,48 @@
+name: Update Translations
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - "src/**"
+      - "data/**"
+      - "po/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-po:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Install gettext
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gettext
+
+      - name: Regenerate POT
+        run: |
+          xgettext \
+            --output=po/io.github.oatbiscuit.bloom.pot \
+            --package-name=Bloom \
+            --from-code=UTF-8 \
+            --add-comments=Translators: \
+            --keyword=_ \
+            --keyword=C_:1c,2 \
+            --files-from=po/POTFILES.in
+
+      - name: Merge into PO files
+        run: |
+          for po in po/*.po; do
+            msgmerge --update --backup=none "$po" po/io.github.oatbiscuit.bloom.pot
+          done
+
+      - uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore(i18n): auto-update POT and PO files"
+          file_pattern: "po/*.pot po/*.po"
