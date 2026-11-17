@@ -3,7 +3,6 @@ name: Release
 on:
   push:
     tags: ['v*']
-  workflow_dispatch:
 
 permissions:
   contents: write
@@ -67,11 +66,21 @@ jobs:
           path: build-dist/meson-dist/*.tar.xz
 
   rpm:
-    name: Build RPM
+    name: Build RPM (${{ matrix.arch }})
     needs: [source-tarball]
-    runs-on: ubuntu-26.04
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - arch: x86_64
+            runner: ubuntu-26.04
+            container: fedora:latest
+          - arch: aarch64
+            runner: ubuntu-26.04-arm
+            container: fedora:latest
     container:
-      image: fedora:latest
+      image: ${{ matrix.container }}
       options: --privileged
     steps:
       - name: Checkout
@@ -89,22 +98,11 @@ jobs:
           name: source-tarball
           path: artifacts
 
-      - name: Inspect tarball
-        run: |
-          TARBALL=$(find artifacts -name "bloom-*.tar.xz")
-          echo "Tarball: $TARBALL"
-          tar -tf "$TARBALL" | head -5
-
       - name: Build RPM
         run: |
           rpmdev-setuptree
           VERSION="${GITHUB_REF_NAME#v}"
-
           TARBALL=$(find artifacts -name "bloom-*.tar.xz")
-          if [ -z "$TARBALL" ]; then
-            echo "Error: Source tarball not found!"
-            exit 1
-          fi
 
           cp "$TARBALL" "$HOME/rpmbuild/SOURCES/bloom-${VERSION}.tar.xz"
           cp bloom.spec "$HOME/rpmbuild/SPECS/"
@@ -117,14 +115,13 @@ jobs:
       - name: Upload RPM artifact
         uses: actions/upload-artifact@v7
         with:
-          name: rpm-package
+          name: rpm-package-${{ matrix.arch }}
           path: ~/rpmbuild/RPMS/**/*.rpm
 
   release:
     name: Publish Release
     needs: [flatpak, source-tarball, rpm]
     runs-on: ubuntu-26.04
-    if: startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v8
@@ -151,5 +148,6 @@ jobs:
             artifacts/flatpak-bundle-x86_64/*.flatpak
             artifacts/flatpak-bundle-aarch64/*.flatpak
             artifacts/source-tarball/*.tar.xz
-            artifacts/rpm-package/**/*.rpm
+            artifacts/rpm-package-x86_64/**/*.rpm
+            artifacts/rpm-package-aarch64/**/*.rpm
           draft: false
