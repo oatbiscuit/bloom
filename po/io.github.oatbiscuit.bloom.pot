@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bloom\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 10:57+0000\n"
+"POT-Creation-Date: 2026-11-21 11:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -562,19 +562,19 @@ msgstr ""
 msgid "Irregular"
 msgstr ""
 
-#: src/day_dialog.vala:62
+#: src/day_dialog.vala:65
 msgid "Clear this day?"
 msgstr ""
 
-#: src/day_dialog.vala:63
+#: src/day_dialog.vala:66
 msgid "This will permanently erase all data logged for this date."
 msgstr ""
 
-#: src/day_dialog.vala:66 src/preferences.vala:169
+#: src/day_dialog.vala:69 src/preferences.vala:169
 msgid "Cancel"
 msgstr ""
 
-#: src/day_dialog.vala:67
+#: src/day_dialog.vala:70
 msgid "Clear"
 msgstr ""
 
@@ -684,7 +684,7 @@ msgstr ""
 msgid "Log your first period to see predictions"
 msgstr ""
 
-#: src/window.vala:264 src/window.vala:422
+#: src/window.vala:264 src/window.vala:442
 msgid "Menstruation"
 msgstr ""
 
@@ -717,14 +717,22 @@ msgstr ""
 msgid "Try a different search term."
 msgstr ""
 
-#: src/window.vala:424
+#: src/window.vala:414
+msgid "Undo"
+msgstr ""
+
+#: src/window.vala:423
+msgid "Changes reverted"
+msgstr ""
+
+#: src/window.vala:444
 msgid "Follicular"
 msgstr ""
 
-#: src/window.vala:426
+#: src/window.vala:446
 msgid "Ovulation"
 msgstr ""
 
-#: src/window.vala:428
+#: src/window.vala:448
 msgid "Luteal"
 msgstr ""
