@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 16:11+0000\n"
+"POT-Creation-Date: 2026-11-21 16:15+0000\n"
 "Last-Translator: Automatically generated\n"
 
 #: data/io.github.oatbiscuit.bloom.desktop.in:2
@@ -388,7 +388,7 @@ msgstr ""
 msgid "Next Month"
 msgstr ""
 
-#: src/ui/window.blp:29
+#: src/ui/window.blp:29 src/shortcuts-dialog.blp:40
 msgid "Go to Current Month"
 msgstr ""
 
@@ -640,10 +640,6 @@ msgstr ""
 
 #: src/shortcuts-dialog.blp:22
 msgid "Navigation"
-msgstr ""
-
-#: src/shortcuts-dialog.blp:40
-msgid "Jump to Current Month"
 msgstr ""
 
 #: src/shortcuts-dialog.blp:56

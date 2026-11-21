@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bloom\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 16:11+0000\n"
+"POT-Creation-Date: 2026-11-21 16:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -401,7 +401,7 @@ msgstr ""
 msgid "Next Month"
 msgstr ""
 
-#: src/ui/window.blp:29
+#: src/ui/window.blp:29 src/shortcuts-dialog.blp:40
 msgid "Go to Current Month"
 msgstr ""
 
@@ -653,10 +653,6 @@ msgstr ""
 
 #: src/shortcuts-dialog.blp:22
 msgid "Navigation"
-msgstr ""
-
-#: src/shortcuts-dialog.blp:40
-msgid "Jump to Current Month"
 msgstr ""
 
 #: src/shortcuts-dialog.blp:56
