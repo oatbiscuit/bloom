@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bloom\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-13 19:51+0000\n"
+"POT-Creation-Date: 2026-11-21 10:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,10 +167,18 @@ msgid "Which day the week starts on (monday or sunday)."
 msgstr ""
 
 #: data/io.github.oatbiscuit.bloom.gschema.xml:27
-msgid "Last Period Reminder"
+msgid "Reminder Hour"
 msgstr ""
 
 #: data/io.github.oatbiscuit.bloom.gschema.xml:28
+msgid "The hour of the day (0-23) to send the period reminder."
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:33
+msgid "Last Period Reminder"
+msgstr ""
+
+#: data/io.github.oatbiscuit.bloom.gschema.xml:34
 msgid "The date (YYYY-MM-DD) when the last period reminder was sent."
 msgstr ""
 
@@ -326,59 +334,71 @@ msgstr ""
 msgid "Cycle Length"
 msgstr ""
 
-#: src/ui/preferences.blp:26 src/ui/preferences.blp:37
+#: src/ui/preferences.blp:26 src/ui/preferences.blp:38
 msgid "Set to 0 to use automated predictions"
 msgstr ""
 
-#: src/ui/preferences.blp:36
+#: src/ui/preferences.blp:37
 msgid "Period Length"
 msgstr ""
 
-#: src/ui/preferences.blp:47
+#: src/ui/preferences.blp:49
 msgid "Luteal Phase Length"
 msgstr ""
 
-#: src/ui/preferences.blp:48
+#: src/ui/preferences.blp:50
 msgid "Days between ovulation and next period"
 msgstr ""
 
-#: src/ui/preferences.blp:59
+#: src/ui/preferences.blp:62
+msgid "Notifications"
+msgstr ""
+
+#: src/ui/preferences.blp:65
+msgid "Reminder Time"
+msgstr ""
+
+#: src/ui/preferences.blp:66
+msgid "Hour of the day to remind you about your period"
+msgstr ""
+
+#: src/ui/preferences.blp:78
 msgid "Data and Privacy"
 msgstr ""
 
-#: src/ui/preferences.blp:60
+#: src/ui/preferences.blp:79
 msgid "Your data is stored locally on this device."
 msgstr ""
 
-#: src/ui/preferences.blp:63
+#: src/ui/preferences.blp:82
 msgid "Database Location"
 msgstr ""
 
-#: src/ui/preferences.blp:69
+#: src/ui/preferences.blp:88
 msgid "Copy Path"
 msgstr ""
 
-#: src/ui/preferences.blp:74
+#: src/ui/preferences.blp:93
 msgid "Export Data"
 msgstr ""
 
-#: src/ui/preferences.blp:75
+#: src/ui/preferences.blp:94
 msgid "Save your logs to a CSV file"
 msgstr ""
 
-#: src/ui/preferences.blp:87
+#: src/ui/preferences.blp:106
 msgid "Import Data"
 msgstr ""
 
-#: src/ui/preferences.blp:88
+#: src/ui/preferences.blp:107
 msgid "Restore your logs from a CSV file"
 msgstr ""
 
-#: src/ui/preferences.blp:100 src/ui/preferences.blp:107
+#: src/ui/preferences.blp:119 src/ui/preferences.blp:126
 msgid "Delete All Data"
 msgstr ""
 
-#: src/ui/preferences.blp:101
+#: src/ui/preferences.blp:120
 msgid "WARNING: This action cannot be undone."
 msgstr ""
 
@@ -510,23 +530,23 @@ msgid ""
 "historical data and should not replace professional medical advice."
 msgstr ""
 
-#: src/app.vala:143 src/app.vala:146
+#: src/app.vala:146 src/app.vala:149
 msgid "Period Approaching"
 msgstr ""
 
-#: src/app.vala:144
+#: src/app.vala:147
 msgid "Your period is due in 2 days."
 msgstr ""
 
-#: src/app.vala:147
+#: src/app.vala:150
 msgid "Your period is due tomorrow."
 msgstr ""
 
-#: src/app.vala:149
+#: src/app.vala:152
 msgid "Period Expected Today"
 msgstr ""
 
-#: src/app.vala:150
+#: src/app.vala:153
 msgid "Your period is predicted to start today."
 msgstr ""
 
@@ -550,7 +570,7 @@ msgstr ""
 msgid "This will permanently erase all data logged for this date."
 msgstr ""
 
-#: src/day_dialog.vala:66 src/preferences.vala:162
+#: src/day_dialog.vala:66 src/preferences.vala:169
 msgid "Cancel"
 msgstr ""
 
@@ -558,61 +578,61 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: src/preferences.vala:90
+#: src/preferences.vala:97
 msgid "Save CSV File"
 msgstr ""
 
-#: src/preferences.vala:101
+#: src/preferences.vala:108
 msgid "Export Successful"
 msgstr ""
 
-#: src/preferences.vala:102
+#: src/preferences.vala:109
 msgid "Your data has been saved."
 msgstr ""
 
-#: src/preferences.vala:104 src/preferences.vala:140 src/preferences.vala:176
+#: src/preferences.vala:111 src/preferences.vala:147 src/preferences.vala:183
 msgid "OK"
 msgstr ""
 
-#: src/preferences.vala:116
+#: src/preferences.vala:123
 msgid "Import CSV File"
 msgstr ""
 
-#: src/preferences.vala:120
+#: src/preferences.vala:127
 msgid "CSV Files"
 msgstr ""
 
-#: src/preferences.vala:137
+#: src/preferences.vala:144
 msgid "Import Successful"
 msgstr ""
 
-#: src/preferences.vala:137
+#: src/preferences.vala:144
 msgid "Import Failed"
 msgstr ""
 
-#: src/preferences.vala:138
+#: src/preferences.vala:145
 msgid "Your data has been imported."
 msgstr ""
 
-#: src/preferences.vala:158
+#: src/preferences.vala:165
 msgid "Delete All Data?"
 msgstr ""
 
-#: src/preferences.vala:159
+#: src/preferences.vala:166
 msgid ""
 "This will permanently erase all your logged cycles and symptoms. This action "
 "cannot be undone."
 msgstr ""
 
-#: src/preferences.vala:163
+#: src/preferences.vala:170
 msgid "Delete"
 msgstr ""
 
-#: src/preferences.vala:173
+#: src/preferences.vala:180
 msgid "Data Deleted"
 msgstr ""
 
-#: src/preferences.vala:174
+#: src/preferences.vala:181
 msgid "All your data has been successfully removed."
 msgstr ""
 
