@@ -45,6 +45,11 @@ public class Bloom.Window : Adw.ApplicationWindow {
     [GtkChild] private unowned Gtk.Label regularity_label;
     
     [GtkChild] private unowned Gtk.SearchEntry search_notes_entry;
+    [GtkChild] private unowned Gtk.MenuButton start_date_btn;
+    [GtkChild] private unowned Gtk.MenuButton end_date_btn;
+    [GtkChild] private unowned Gtk.Calendar start_calendar;
+    [GtkChild] private unowned Gtk.Calendar end_calendar;
+    [GtkChild] private unowned Gtk.Button clear_dates_btn;
     [GtkChild] private unowned Adw.StatusPage empty_page;
     [GtkChild] private unowned Adw.PreferencesGroup notes_group;
 
@@ -52,6 +57,8 @@ public class Bloom.Window : Adw.ApplicationWindow {
     private Bloom.Database db;
     private Bloom.CycleEngine engine;
     private GLib.Settings settings;
+    private string? active_start_date = null;
+    private string? active_end_date = null;
 
     construct {
         db = Bloom.Database.get_instance();
@@ -82,6 +89,30 @@ public class Bloom.Window : Adw.ApplicationWindow {
             update_notes_view (search_notes_entry.text);
         });
 
+        start_calendar.day_selected.connect (() => {
+            var date = start_calendar.get_date ();
+            active_start_date = date.format ("%Y-%m-%d");
+            start_date_btn.label = date.format ("%b %e");
+            start_date_btn.popover.popdown ();
+            update_notes_view (search_notes_entry.text);
+        });
+
+        end_calendar.day_selected.connect (() => {
+            var date = end_calendar.get_date ();
+            active_end_date = date.format ("%Y-%m-%d");
+            end_date_btn.label = date.format ("%b %e");
+            end_date_btn.popover.popdown ();
+            update_notes_view (search_notes_entry.text);
+        });
+
+        clear_dates_btn.clicked.connect (() => {
+            active_start_date = null;
+            active_end_date = null;
+            start_date_btn.label = _("Start Date");
+            end_date_btn.label = _("End Date");
+            update_notes_view (search_notes_entry.text);
+        });
+
         prev_month_btn.clicked.connect (() => {
             current_month = current_month.add_months (-1);
             rebuild_grid ();
@@ -108,7 +139,6 @@ public class Bloom.Window : Adw.ApplicationWindow {
 
         heatmap_area.set_draw_func (draw_heatmap);
         
-        // Populate the year dropdown
         var years = db.get_years_with_data ();
         var year_strings = new Gtk.StringList (null);
         foreach (int y in years) {
@@ -116,7 +146,6 @@ public class Bloom.Window : Adw.ApplicationWindow {
         }
         year_dropdown.model = year_strings;
 
-        // Redraw when the year changes
         year_dropdown.notify["selected"].connect (() => {
             heatmap_area.queue_draw ();
         });
@@ -355,7 +384,7 @@ public class Bloom.Window : Adw.ApplicationWindow {
         }
         note_rows.clear ();
 
-        var notes_map = db.search_notes (search_term);
+        var notes_map = db.search_notes (search_term, active_start_date, active_end_date);
 
         if (notes_map.size == 0) {
             empty_page.visible = true;

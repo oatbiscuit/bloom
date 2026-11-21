@@ -238,21 +238,35 @@ public class Bloom.Database : GLib.Object {
         stmt.step ();
     }
     
-    public Gee.HashMap<string, string> search_notes (string search_term) {
+    public Gee.HashMap<string, string> search_notes (string search_term, string? start_date, string? end_date) {
         var results = new Gee.HashMap<string, string> ();
-        string query;
+        var conditions = new Gee.ArrayList<string> ();
+        var params = new Gee.ArrayList<string> ();
         
-        if (search_term == "") {
-            query = "SELECT date, notes FROM day_logs WHERE notes != '' ORDER BY date DESC;";
+        if (search_term != "") {
+            conditions.add ("notes LIKE ?");
+            params.add ("%" + search_term + "%");
         } else {
-            query = "SELECT date, notes FROM day_logs WHERE notes LIKE ? ORDER BY date DESC;";
+            conditions.add ("notes != ''");
         }
+
+        if (start_date != null && start_date != "") {
+            conditions.add ("date >= ?");
+            params.add (start_date);
+        }
+
+        if (end_date != null && end_date != "") {
+            conditions.add ("date <= ?");
+            params.add (end_date);
+        }
+
+        string query = "SELECT date, notes FROM day_logs WHERE " + string.joinv (" AND ", conditions.to_array ()) + " ORDER BY date DESC;";
 
         Sqlite.Statement stmt;
         if (db.prepare_v2 (query, -1, out stmt) != Sqlite.OK) return results;
 
-        if (search_term != "") {
-            stmt.bind_text (1, "%" + search_term + "%");
+        for (int i = 0; i < params.size; i++) {
+            stmt.bind_text (i + 1, params[i]);
         }
 
         while (stmt.step () == Sqlite.ROW) {

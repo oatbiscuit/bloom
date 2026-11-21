@@ -218,6 +218,36 @@ template $BloomWindow : Adw.ApplicationWindow {
                   placeholder-text: _("Search your notes…");
                 }
 
+                Box {
+                  orientation: horizontal;
+                  spacing: 12;
+                  halign: center;
+
+                  MenuButton start_date_btn {
+                    label: _("Start Date");
+                    popover: Popover {
+                      Calendar start_calendar {
+                        margin-start: 6; margin-end: 6; margin-top: 6; margin-bottom: 6;
+                      }
+                    };
+                  }
+
+                  MenuButton end_date_btn {
+                    label: _("End Date");
+                    popover: Popover {
+                      Calendar end_calendar {
+                        margin-start: 6; margin-end: 6; margin-top: 6; margin-bottom: 6;
+                      }
+                    };
+                  }
+
+                  Button clear_dates_btn {
+                    icon-name: "edit-clear-symbolic";
+                    tooltip-text: _("Clear Date Filters");
+                    styles ["flat"]
+                  }
+                }
+
                 ScrolledWindow {
                   vexpand: true;
                   hscrollbar-policy: never;
