@@ -407,8 +407,28 @@ public class Bloom.Window : Adw.ApplicationWindow {
 
             if (dialog.data_changed) {
                 string date_str = date.format ("%B %d, %Y");
-                var toast = new Adw.Toast (_(@"Changes saved for $date_str"));
-                toast.timeout = 2;
+                string date_iso = date.format ("%Y-%m-%d");
+
+                var toast = new Adw.Toast (_(@"Changes saved for $date_str")) {
+                    timeout = 5,
+                    button_label = _("Undo")
+                };
+
+                var undo_action = new GLib.SimpleAction ("undo", null);
+                undo_action.activate.connect (() => {
+                    if (dialog.undo_snapshot != null) {
+                        db.restore_day_log (date_iso, dialog.undo_snapshot);
+                        rebuild_grid ();
+
+                        var undo_toast = new Adw.Toast (_("Changes reverted"));
+                        undo_toast.timeout = 2;
+                        toast_overlay.add_toast (undo_toast);
+                    }
+                });
+
+                this.add_action (undo_action);
+                toast.action_name = "win.undo";
+
                 toast_overlay.add_toast (toast);
             }
         });

@@ -45,6 +45,7 @@ public class Bloom.DayDialog : Adw.Dialog {
     private string date_string;
     private Bloom.Database db;
     public bool data_changed { get; private set; default = false; }
+    public Gee.HashMap<string, string>? undo_snapshot { get; private set; }
 
     public DayDialog (GLib.DateTime date) {
         Object (selected_date: date);
@@ -57,6 +58,8 @@ public class Bloom.DayDialog : Adw.Dialog {
             this.db = Bloom.Database.get_instance ();
         }
         
+        this.undo_snapshot = db.get_full_day_log (date_string);
+
         clear_day_btn.clicked.connect (() => {
             var dialog = new Adw.AlertDialog (
                 _("Clear this day?"),

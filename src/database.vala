@@ -163,6 +163,54 @@ public class Bloom.Database : GLib.Object {
         return dates;
     }
 
+    public Gee.HashMap<string, string> get_full_day_log (string date) {
+        var log = new Gee.HashMap<string, string> ();
+        string query = "SELECT * FROM day_logs WHERE date = ?;";
+        Sqlite.Statement stmt;
+
+        if (db.prepare_v2 (query, -1, out stmt) != Sqlite.OK) return log;
+
+        stmt.bind_text (1, date);
+        if (stmt.step () == Sqlite.ROW) {
+            int cols = stmt.column_count ();
+            for (int i = 0; i < cols; i++) {
+                string col_name = stmt.column_name (i);
+                log.set (col_name, stmt.column_text (i));
+            }
+        }
+        return log;
+    }
+
+    public void restore_day_log (string date, Gee.HashMap<string, string> snapshot) {
+        if (snapshot.size == 0) {
+            delete_day (date);
+            return;
+        }
+
+        var cols = new Gee.ArrayList<string> ();
+        var vals = new Gee.ArrayList<string> ();
+        var placeholders = new Gee.ArrayList<string> ();
+
+        foreach (var entry in snapshot.entries) {
+            cols.add (entry.key);
+            vals.add (entry.value);
+            placeholders.add ("?");
+        }
+
+        string col_str = string.joinv (", ", cols.to_array ());
+        string placeholder_str = string.joinv (", ", placeholders.to_array ());
+
+        string query = @"INSERT OR REPLACE INTO day_logs ($col_str) VALUES ($placeholder_str);";
+
+        Sqlite.Statement stmt;
+        if (db.prepare_v2 (query, -1, out stmt) != Sqlite.OK) return;
+
+        for (int i = 0; i < vals.size; i++) {
+            stmt.bind_text (i + 1, vals[i]);
+        }
+        stmt.step ();
+    }
+
     public Gee.ArrayList<string> get_all_positive_opk_dates () {
         var dates = new Gee.ArrayList<string> ();
         string query = "SELECT date FROM day_logs WHERE ovulation_test >= 2 ORDER BY date ASC;";
