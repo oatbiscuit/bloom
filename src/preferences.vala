@@ -28,6 +28,8 @@ public class Bloom.PreferencesDialog : Adw.PreferencesDialog {
     [GtkChild] private unowned Adw.SpinRow custom_period_row;
     [GtkChild] private unowned Adw.SpinRow custom_luteal_row;
 
+    [GtkChild] private unowned Adw.SpinRow reminder_hour_row;
+
     [GtkChild] private unowned Adw.ActionRow db_path_row;
     [GtkChild] private unowned Gtk.Button copy_path_btn;
     [GtkChild] private unowned Adw.ActionRow export_data_row;
@@ -75,6 +77,11 @@ public class Bloom.PreferencesDialog : Adw.PreferencesDialog {
         
         copy_path_btn.clicked.connect (() => {
             this.get_clipboard ().set_text (db.db_path);
+        });
+
+        reminder_hour_row.value = settings.get_int ("reminder-hour");
+        reminder_hour_row.notify["value"].connect (() => {
+            settings.set_int ("reminder-hour", (int) reminder_hour_row.value);
         });
 
         this.closed.connect (() => {

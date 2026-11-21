@@ -22,6 +22,12 @@
       <description>Which day the week starts on (monday or sunday).</description>
     </key>
 	  
+	  <key name="reminder-hour" type="i">
+      <default>8</default>
+      <summary>Reminder Hour</summary>
+      <description>The hour of the day (0-23) to send the period reminder.</description>
+    </key>
+
 	  <key name="last-period-reminder" type="s">
       <default>''</default>
       <summary>Last Period Reminder</summary>

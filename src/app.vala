@@ -114,6 +114,9 @@ public class Bloom.Application : Adw.Application {
         if (next_period == null) return;
 
         var today = new GLib.DateTime.now_local ();
+        int reminder_hour = settings.get_int ("reminder-hour");
+
+        if (today.get_hour () != reminder_hour) return;
 
         var today_midnight = new GLib.DateTime.local (
             today.get_year (), today.get_month (), today.get_day_of_month (), 0, 0, 0

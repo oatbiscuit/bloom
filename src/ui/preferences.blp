@@ -28,6 +28,7 @@ template $BloomPreferencesDialog : Adw.PreferencesDialog {
           lower: 0;
           upper: 60;
           value: 0;
+          step-increment: 1;
         };
         digits: 0;
       }
@@ -39,6 +40,7 @@ template $BloomPreferencesDialog : Adw.PreferencesDialog {
           lower: 0;
           upper: 14;
           value: 0;
+          step-increment: 1;
         };
         digits: 0;
       }
@@ -50,11 +52,28 @@ template $BloomPreferencesDialog : Adw.PreferencesDialog {
           lower: 9;
           upper: 16;
           value: 14;
+          step-increment: 1;
         };
         digits: 0;
       }
     }
     
+    Adw.PreferencesGroup {
+      title: _("Notifications");
+
+      Adw.SpinRow reminder_hour_row {
+        title: _("Reminder Time");
+        subtitle: _("Hour of the day to remind you about your period");
+        adjustment: Adjustment {
+          lower: 0;
+          upper: 23;
+          value: 8;
+          step-increment: 1;
+        };
+        digits: 0;
+      }
+    }
+
     Adw.PreferencesGroup {
       title: _("Data and Privacy");
       description: _("Your data is stored locally on this device.");
