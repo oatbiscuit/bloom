@@ -507,6 +507,19 @@ public class Bloom.Database : GLib.Object {
         return data;
     }
 
+    public Gee.HashMap<string, bool> get_year_ovulation_days (int year) {
+        var data = new Gee.HashMap<string, bool> ();
+        string query = @"SELECT date FROM day_logs WHERE ovulation_test >= 2 AND date LIKE '$year-%';";
+        Sqlite.Statement stmt;
+
+        if (db.prepare_v2 (query, -1, out stmt) == Sqlite.OK) {
+            while (stmt.step () == Sqlite.ROW) {
+                data.set (stmt.column_text (0), true);
+            }
+        }
+        return data;
+    }
+
     public Gee.ArrayList<int> get_years_with_data () {
         var years = new Gee.ArrayList<int> ();
         string query = "SELECT DISTINCT substr(date, 1, 4) FROM day_logs ORDER BY date DESC;";

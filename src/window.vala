@@ -458,7 +458,8 @@ public class Bloom.Window : Adw.ApplicationWindow {
         string year_str = string_obj.get_string ();
         int year = int.parse (year_str);
 
-        var data = db.get_year_period_days (year);
+        var period_data = db.get_year_period_days (year);
+        var ovulation_data = db.get_year_ovulation_days (year);
 
         int num_cols = 53; 
         int spacing = 2; 
@@ -481,15 +482,12 @@ public class Bloom.Window : Adw.ApplicationWindow {
         
         for (int m = 1; m <= 12; m++) {
             var month_date = new GLib.DateTime.local (year, m, 1, 0, 0, 0);
-            
             var diff = month_date.difference (start_date);
             int days_since_start = (int) (diff / TimeSpan.DAY);
-            
             int week = (days_since_start + start_offset) / 7;
             
             if (week - last_label_week >= 3) {
                 string month_name = month_date.format ("%b");
-                
                 double x = week * (cell_size + spacing);
                 
                 cr.move_to (x, 10);
@@ -509,8 +507,13 @@ public class Bloom.Window : Adw.ApplicationWindow {
             double x = week * (cell_size + spacing);
             double y = start_y + (day * (cell_size + spacing));
 
-            if (data.has_key (date_str)) {
+            bool is_period = period_data.has_key (date_str);
+            bool is_ovulation = ovulation_data.has_key (date_str);
+
+            if (is_period) {
                 cr.set_source_rgb (0.88, 0.11, 0.14);
+            } else if (is_ovulation) {
+                cr.set_source_rgb (0.56, 0.25, 0.67);
             } else {
                 cr.set_source_rgba (0.5, 0.5, 0.5, 0.15);
             }
@@ -524,6 +527,13 @@ public class Bloom.Window : Adw.ApplicationWindow {
             cr.arc (x + radius, y + radius, radius, 180 * degrees, 270 * degrees);
             cr.close_path ();
             cr.fill ();
+
+            if (is_period && is_ovulation) {
+                cr.set_source_rgb (0.56, 0.25, 0.67);
+                double dot_radius = cell_size * 0.2;
+                cr.arc (x + cell_size / 2.0, y + cell_size / 2.0, dot_radius, 0, 2 * Math.PI);
+                cr.fill ();
+            }
         }
     }
 }
