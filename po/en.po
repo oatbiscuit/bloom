@@ -1,12 +1,12 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 11:40+0000\n"
+"POT-Creation-Date: 2026-11-21 16:11+0000\n"
 "Last-Translator: Automatically generated\n"
 
 #: data/io.github.oatbiscuit.bloom.desktop.in:2
 #: data/io.github.oatbiscuit.bloom.metainfo.xml.in:8 src/ui/window.blp:5
-#: src/app.vala:69
+#: src/app.vala:71
 msgid "Bloom"
 msgstr ""
 
@@ -14,7 +14,7 @@ msgstr ""
 msgid "Health Tracker"
 msgstr ""
 
-#: data/io.github.oatbiscuit.bloom.desktop.in:4 src/app.vala:70
+#: data/io.github.oatbiscuit.bloom.desktop.in:4 src/app.vala:72
 msgid "Track your menstrual cycle and symptoms"
 msgstr ""
 
@@ -108,18 +108,6 @@ msgstr ""
 msgid "Change default settings and import/export data"
 msgstr ""
 
-#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:84
-msgid "Bug fix release"
-msgstr ""
-
-#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:86
-msgid "Fix styles and blueprint"
-msgstr ""
-
-#: data/io.github.oatbiscuit.bloom.metainfo.xml.in:87
-msgid "Fix database"
-msgstr ""
-
 #: data/io.github.oatbiscuit.bloom.gschema.xml:6
 msgid "Custom Cycle Length"
 msgstr ""
@@ -169,143 +157,146 @@ msgstr ""
 msgid "The date (YYYY-MM-DD) when the last period reminder was sent."
 msgstr ""
 
-#: src/ui/day_dialog.blp:13
+#: src/ui/day-dialog.blp:13
 msgid "Clear Day"
 msgstr ""
 
-#: src/ui/day_dialog.blp:19 src/ui/day_dialog.blp:24
+#: src/ui/day-dialog.blp:19 src/ui/day-dialog.blp:24
 msgid "Log Period"
 msgstr ""
 
-#: src/ui/day_dialog.blp:26 src/ui/window.blp:94
+#: src/ui/day-dialog.blp:26 src/ui/window.blp:94
 msgid "Cycle"
 msgstr ""
 
-#: src/ui/day_dialog.blp:29 src/window.vala:234
+#: src/ui/day-dialog.blp:29 src/window.vala:253
 msgid "Period Day"
 msgstr ""
 
-#: src/ui/day_dialog.blp:30
+#: src/ui/day-dialog.blp:30
 msgid "Mark this day as a bleeding day"
 msgstr ""
 
-#: src/ui/day_dialog.blp:34
+#: src/ui/day-dialog.blp:34
 msgid "Flow"
 msgstr ""
 
-#: src/ui/day_dialog.blp:37
+#: src/ui/day-dialog.blp:37
 msgid "None"
 msgstr ""
 
-#: src/ui/day_dialog.blp:38
+#: src/ui/day-dialog.blp:38
 msgid "Spotting"
 msgstr ""
 
-#: src/ui/day_dialog.blp:39
+#: src/ui/day-dialog.blp:39
 msgid "Light"
 msgstr ""
 
-#: src/ui/day_dialog.blp:40
+#: src/ui/day-dialog.blp:40
 msgid "Medium"
 msgstr ""
 
-#: src/ui/day_dialog.blp:41
+#: src/ui/day-dialog.blp:41
 msgid "Heavy"
 msgstr ""
 
-#: src/ui/day_dialog.blp:48
+#: src/ui/day-dialog.blp:48
 msgid "Body"
 msgstr ""
 
-#: src/ui/day_dialog.blp:51
+#: src/ui/day-dialog.blp:51
 msgid "Ovulation Test (OPK)"
 msgstr ""
 
-#: src/ui/day_dialog.blp:54 src/ui/day_dialog.blp:79
+#: src/ui/day-dialog.blp:54 src/ui/day-dialog.blp:79
 msgid "Not Logged"
 msgstr ""
 
-#: src/ui/day_dialog.blp:55
+#: src/ui/day-dialog.blp:55
 msgid "Negative"
 msgstr ""
 
-#: src/ui/day_dialog.blp:56
+#: src/ui/day-dialog.blp:56
 msgid "Positive (LH Surge)"
 msgstr ""
 
-#: src/ui/day_dialog.blp:57
+#: src/ui/day-dialog.blp:57
 msgid "Peak"
 msgstr ""
 
-#: src/ui/day_dialog.blp:63
+#: src/ui/day-dialog.blp:63
 msgid "Basal Temperature (BBT)"
 msgstr ""
 
-#: src/ui/day_dialog.blp:64
+#: src/ui/day-dialog.blp:64
 msgid "in celsius (C)"
 msgstr ""
 
-#: src/ui/day_dialog.blp:76
+#: src/ui/day-dialog.blp:76
 msgid "Cervical Mucus (CM)"
 msgstr ""
 
-#: src/ui/day_dialog.blp:80
+#: src/ui/day-dialog.blp:80
 msgid "Dry / None"
 msgstr ""
 
-#: src/ui/day_dialog.blp:81
+#: src/ui/day-dialog.blp:81
 msgid "Sticky"
 msgstr ""
 
-#: src/ui/day_dialog.blp:82
+#: src/ui/day-dialog.blp:82
 msgid "Creamy"
 msgstr ""
 
-#: src/ui/day_dialog.blp:83
+#: src/ui/day-dialog.blp:83
 msgid "Egg White / Stretchy"
 msgstr ""
 
-#: src/ui/day_dialog.blp:90 src/ui/day_dialog.blp:93 src/ui/window.blp:198
+#: src/ui/day-dialog.blp:90 src/ui/day-dialog.blp:93 src/ui/window.blp:198
+#: src/shortcuts-dialog.blp:32 src/shortcuts-dialog.blp:54
 msgid "Notes"
 msgstr ""
 
-#: src/ui/day_dialog.blp:98
+#: src/ui/day-dialog.blp:98
 msgid "Symptoms"
 msgstr ""
 
-#: src/ui/day_dialog.blp:101
+#: src/ui/day-dialog.blp:101
 msgid "Cramps"
 msgstr ""
 
-#: src/ui/day_dialog.blp:105
+#: src/ui/day-dialog.blp:105
 msgid "Bloating"
 msgstr ""
 
-#: src/ui/day_dialog.blp:109
+#: src/ui/day-dialog.blp:109
 msgid "Breast Tenderness"
 msgstr ""
 
-#: src/ui/day_dialog.blp:113
+#: src/ui/day-dialog.blp:113
 msgid "Fatigue"
 msgstr ""
 
-#: src/ui/day_dialog.blp:117
+#: src/ui/day-dialog.blp:117
 msgid "Headache"
 msgstr ""
 
-#: src/ui/day_dialog.blp:121
+#: src/ui/day-dialog.blp:121
 msgid "Mood Changes"
 msgstr ""
 
-#: src/ui/day_dialog.blp:125
+#: src/ui/day-dialog.blp:125
 msgid "Cravings"
 msgstr ""
 
-#: src/ui/preferences.blp:5 src/ui/preferences.blp:8 src/ui/window.blp:287
+#: src/ui/preferences.blp:5 src/ui/preferences.blp:8 src/ui/window.blp:291
+#: src/shortcuts-dialog.blp:8
 msgid "Preferences"
 msgstr ""
 
-#: src/ui/preferences.blp:11 src/ui/window.blp:61
+#: src/ui/preferences.blp:11 src/ui/window.blp:61 src/shortcuts-dialog.blp:24
+#: src/shortcuts-dialog.blp:38
 msgid "Calendar"
 msgstr ""
 
@@ -389,16 +380,16 @@ msgstr ""
 msgid "WARNING: This action cannot be undone."
 msgstr ""
 
-#: src/ui/window.blp:17
+#: src/ui/window.blp:17 src/shortcuts-dialog.blp:44
 msgid "Previous Month"
 msgstr ""
 
-#: src/ui/window.blp:23
+#: src/ui/window.blp:23 src/shortcuts-dialog.blp:48
 msgid "Next Month"
 msgstr ""
 
 #: src/ui/window.blp:29
-msgid "Jump to Date"
+msgid "Go to Current Month"
 msgstr ""
 
 #: src/ui/window.blp:49
@@ -413,7 +404,7 @@ msgstr ""
 msgid "Next Period Date"
 msgstr ""
 
-#: src/ui/window.blp:110
+#: src/ui/window.blp:110 src/shortcuts-dialog.blp:28
 msgid "Insights"
 msgstr ""
 
@@ -457,7 +448,7 @@ msgstr ""
 msgid "Based on your last 6 cycles"
 msgstr ""
 
-#: src/ui/window.blp:168 src/cycle_engine.vala:333 src/window.vala:372
+#: src/ui/window.blp:168 src/cycle_engine.vala:333 src/window.vala:391
 msgid "Not enough data"
 msgstr ""
 
@@ -497,11 +488,11 @@ msgstr ""
 msgid "Clear Date Filters"
 msgstr ""
 
-#: src/ui/window.blp:264 src/window.vala:397
+#: src/ui/window.blp:264 src/window.vala:416
 msgid "No notes yet"
 msgstr ""
 
-#: src/ui/window.blp:265 src/window.vala:398
+#: src/ui/window.blp:265 src/window.vala:417
 msgid "Your notes will appear here. Click a day on the calendar to add a note."
 msgstr ""
 
@@ -509,19 +500,27 @@ msgstr ""
 msgid "View your notes"
 msgstr ""
 
-#: src/ui/window.blp:291
+#: src/ui/window.blp:287 src/shortcuts-dialog.blp:12
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/ui/window.blp:295
 msgid "About"
 msgstr ""
 
-#: src/app.vala:76
+#: src/ui/window.blp:301 src/shortcuts-dialog.blp:16
+msgid "Quit"
+msgstr ""
+
+#: src/app.vala:78
 msgid "translator-credits"
 msgstr ""
 
-#: src/app.vala:83
+#: src/app.vala:85
 msgid "Medical Disclaimer"
 msgstr ""
 
-#: src/app.vala:84
+#: src/app.vala:86
 msgid ""
 "Bloom is a wellness tracker intended for personal awareness only. It is not "
 "a medical application and should not be used as a method of contraception or "
@@ -529,35 +528,35 @@ msgid ""
 "historical data and should not replace professional medical advice."
 msgstr ""
 
-#: src/app.vala:146 src/app.vala:149
+#: src/app.vala:148 src/app.vala:151
 msgid "Period Approaching"
 msgstr ""
 
-#: src/app.vala:147
+#: src/app.vala:149
 msgid "Your period is due in 2 days."
 msgstr ""
 
-#: src/app.vala:150
+#: src/app.vala:152
 msgid "Your period is due tomorrow."
 msgstr ""
 
-#: src/app.vala:152
+#: src/app.vala:154
 msgid "Period Expected Today"
 msgstr ""
 
-#: src/app.vala:153
+#: src/app.vala:155
 msgid "Your period is predicted to start today."
 msgstr ""
 
-#: src/cycle_engine.vala:341 src/window.vala:351
+#: src/cycle_engine.vala:341 src/window.vala:370
 msgid "Very Regular"
 msgstr ""
 
-#: src/cycle_engine.vala:343 src/window.vala:354
+#: src/cycle_engine.vala:343 src/window.vala:373
 msgid "Regular"
 msgstr ""
 
-#: src/cycle_engine.vala:345 src/window.vala:356
+#: src/cycle_engine.vala:345 src/window.vala:375
 msgid "Irregular"
 msgstr ""
 
@@ -635,103 +634,119 @@ msgstr ""
 msgid "All your data has been successfully removed."
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/shortcuts-dialog.blp:6
+msgid "Application"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:22
+msgid "Navigation"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:40
+msgid "Jump to Current Month"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:56
+msgid "Search Notes"
+msgstr ""
+
+#: src/window.vala:198 src/window.vala:200
 msgid "Sun"
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/window.vala:198 src/window.vala:200
 msgid "Mon"
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/window.vala:198 src/window.vala:200
 msgid "Tues"
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/window.vala:198 src/window.vala:200
 msgid "Wed"
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/window.vala:198 src/window.vala:200
 msgid "Thu"
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/window.vala:198 src/window.vala:200
 msgid "Fri"
 msgstr ""
 
-#: src/window.vala:179 src/window.vala:181
+#: src/window.vala:198 src/window.vala:200
 msgid "Sat"
 msgstr ""
 
-#: src/window.vala:237
+#: src/window.vala:256
 msgid "Predicted Period"
 msgstr ""
 
-#: src/window.vala:242
+#: src/window.vala:261
 msgid "Predicted Ovulation"
 msgstr ""
 
-#: src/window.vala:247
+#: src/window.vala:266
 msgid "Today"
 msgstr ""
 
-#: src/window.vala:284
+#: src/window.vala:303
 msgid "No data logged yet"
 msgstr ""
 
-#: src/window.vala:285
+#: src/window.vala:304
 msgid "Log your first period to see predictions"
 msgstr ""
 
-#: src/window.vala:293 src/window.vala:471
+#: src/window.vala:312 src/window.vala:525
 msgid "Menstruation"
 msgstr ""
 
-#: src/window.vala:312
+#: src/window.vala:331
 msgid "Expected. Log it when it starts."
 msgstr ""
 
-#: src/window.vala:314
+#: src/window.vala:333
 msgid "Expected today"
 msgstr ""
 
-#: src/window.vala:319
+#: src/window.vala:338
 msgid "Unknown"
 msgstr ""
 
-#: src/window.vala:365 src/window.vala:366 src/window.vala:367
-#: src/window.vala:368 src/window.vala:369 src/window.vala:370
+#: src/window.vala:384 src/window.vala:385 src/window.vala:386
+#: src/window.vala:387 src/window.vala:388 src/window.vala:389
 msgid "No data yet"
 msgstr ""
 
-#: src/window.vala:371
+#: src/window.vala:390
 msgid "0"
 msgstr ""
 
-#: src/window.vala:394
+#: src/window.vala:413
 msgid "No matching notes"
 msgstr ""
 
-#: src/window.vala:395
+#: src/window.vala:414
 msgid "Try a different search term."
 msgstr ""
 
-#: src/window.vala:443
+#: src/window.vala:463
 msgid "Undo"
 msgstr ""
 
-#: src/window.vala:452
+#: src/window.vala:472
 msgid "Changes reverted"
 msgstr ""
 
-#: src/window.vala:473
+#: src/window.vala:527
 msgid "Follicular"
 msgstr ""
 
-#: src/window.vala:475
+#: src/window.vala:529
 msgid "Ovulation"
 msgstr ""
 
-#: src/window.vala:477
+#: src/window.vala:531
 msgid "Luteal"
 msgstr ""
