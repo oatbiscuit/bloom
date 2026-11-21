@@ -18,7 +18,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/io/github/oatbiscuit/bloom/ui/day_dialog.ui")]
+[GtkTemplate (ui = "/io/github/oatbiscuit/bloom/ui/day-dialog.ui")]
 public class Bloom.DayDialog : Adw.Dialog {
     [GtkChild] private unowned Adw.WindowTitle day_title;
     [GtkChild] private unowned Gtk.Button clear_day_btn;

@@ -26,7 +26,7 @@ template $BloomWindow : Adw.ApplicationWindow {
         [start]
         MenuButton jump_to_date_btn {
           icon-name: "x-office-calendar-symbolic";
-          tooltip-text: _("Jump to Date");
+          tooltip-text: _("Go to Current Month");
           popover: Popover {
             Calendar jump_calendar {
               margin-start: 6;
@@ -284,12 +284,22 @@ template $BloomWindow : Adw.ApplicationWindow {
 menu main_menu {
   section {
     item {
+      label: _("Keyboard Shortcuts");
+      action: "app.shortcuts";
+    }
+    item {
       label: _("Preferences");
       action: "app.preferences";
     }
     item {
       label: _("About");
       action: "app.about";
+    }
+  } // end Section
+  section {
+    item {
+      label: _("Quit");
+      action: "app.quit";
     }
   } // end Section
 } //end menu

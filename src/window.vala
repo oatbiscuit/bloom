@@ -156,6 +156,25 @@ public class Bloom.Window : Adw.ApplicationWindow {
 
     public Window (Gtk.Application app) {
         Object (application: app);
+
+        ActionEntry[] win_actions = {
+            { "curr-month", this.on_curr_month_action },
+            { "prev-month", this.on_prev_month_action },
+            { "next-month", this.on_next_month_action },
+            { "search-notes", this.on_search_notes_action },
+            { "switch-calendar", this.on_switch_calendar_action },
+            { "switch-insights", this.on_switch_insights_action },
+            { "switch-notes", this.on_switch_notes_action },
+        };
+        this.add_action_entries (win_actions, this);
+
+        this.application.set_accels_for_action ("win.curr-month", { "<primary>t" });
+        this.application.set_accels_for_action ("win.prev-month", { "<primary>Left" });
+        this.application.set_accels_for_action ("win.next-month", { "<primary>Right" });
+        this.application.set_accels_for_action ("win.search-notes", { "<primary>f" });
+        this.application.set_accels_for_action ("win.switch-calendar", { "<primary>1" });
+        this.application.set_accels_for_action ("win.switch-insights", { "<primary>2" });
+        this.application.set_accels_for_action ("win.switch-notes", { "<primary>3" });
     }
 
     public void rebuild_grid () {
@@ -407,7 +426,7 @@ public class Bloom.Window : Adw.ApplicationWindow {
             string date_str = entry.key;
             string note = entry.value;
 
-            var dt = new GLib.DateTime.from_iso8601 (date_str + "T00:00:00Z", null);
+            var dt = new GLib.DateTime.from_iso8601 (date_str + "T00:00:00", new GLib.TimeZone.local ());
             string formatted_date = dt.format ("%B %e, %Y");
 
             var row = new Adw.ActionRow () {
@@ -420,8 +439,9 @@ public class Bloom.Window : Adw.ApplicationWindow {
                 current_month = new GLib.DateTime.local (
                     dt.get_year (), dt.get_month (), 1, 0, 0, 0
                 );
-                rebuild_grid ();
                 view_stack.visible_child_name = "calendar";
+                rebuild_grid ();
+                on_day_clicked (dt);
             });
 
             notes_group.add (row);
@@ -464,6 +484,40 @@ public class Bloom.Window : Adw.ApplicationWindow {
         dialog.present (this);
     }
     
+    private void on_curr_month_action () {
+        var now = new GLib.DateTime.now_local ();
+        current_month = new GLib.DateTime.local (now.get_year (), now.get_month (), 1, 0, 0, 0);
+        view_stack.visible_child_name = "calendar";
+        rebuild_grid ();
+    }
+
+    private void on_prev_month_action () {
+        current_month = current_month.add_months (-1);
+        rebuild_grid ();
+    }
+
+    private void on_next_month_action () {
+        current_month = current_month.add_months (1);
+        rebuild_grid ();
+    }
+
+    private void on_search_notes_action () {
+        view_stack.visible_child_name = "notes";
+        search_notes_entry.grab_focus ();
+    }
+
+    private void on_switch_calendar_action () {
+        view_stack.visible_child_name = "calendar";
+    }
+
+    private void on_switch_insights_action () {
+        view_stack.visible_child_name = "insights";
+    }
+
+    private void on_switch_notes_action () {
+        view_stack.visible_child_name = "notes";
+    }
+
     private string get_cycle_phase (int cycle_day, int period_length, int cycle_length, int luteal_length) {
         int ovulation_day = cycle_length - luteal_length;
 

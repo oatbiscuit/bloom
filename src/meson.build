@@ -18,9 +18,10 @@ deps = [
 
 blueprints = custom_target ('blueprints',
   input: files (
-    'ui/day_dialog.blp',
+    'ui/day-dialog.blp',
     'ui/preferences.blp',
     'ui/window.blp',
+    'shortcuts-dialog.blp',
   ),
   output: '.',
   command: [ find_program ('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@' ],

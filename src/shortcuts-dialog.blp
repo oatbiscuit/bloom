@@ -1,0 +1,60 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.ShortcutsDialog shortcuts_dialog {
+  Adw.ShortcutsSection {
+    title: _("Application");
+    Adw.ShortcutsItem {
+      title: _("Preferences");
+      action-name: "app.preferences";
+    }
+    Adw.ShortcutsItem {
+      title: _("Keyboard Shortcuts");
+      accelerator: "F1";
+    }
+    Adw.ShortcutsItem {
+      title: _("Quit");
+      action-name: "app.quit";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: _("Navigation");
+    Adw.ShortcutsItem {
+      title: _("Calendar");
+      accelerator: "<Primary>1";
+    }
+    Adw.ShortcutsItem {
+      title: _("Insights");
+      accelerator: "<Primary>2";
+    }
+    Adw.ShortcutsItem {
+      title: _("Notes");
+      accelerator: "<Primary>3";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: _("Calendar");
+    Adw.ShortcutsItem {
+      title: _("Jump to Current Month");
+      action-name: "win.curr-month";
+    }
+    Adw.ShortcutsItem {
+      title: _("Previous Month");
+      action-name: "win.prev-month";
+    }
+    Adw.ShortcutsItem {
+      title: _("Next Month");
+      action-name: "win.next-month";
+    }
+  }
+
+  Adw.ShortcutsSection {
+    title: _("Notes");
+    Adw.ShortcutsItem {
+      title: _("Search Notes");
+      action-name: "win.search-notes";
+    }
+  }
+}
