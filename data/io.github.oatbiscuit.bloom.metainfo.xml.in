@@ -79,12 +79,17 @@
   </screenshots>
 
   <releases>
-    <release version="1.0.2" date="2026-11-11">
+    <release version="1.1.0" date="2026-11-21">
       <description translate="no">
-        <p>Bug fix release</p>
         <ul>
-          <li>Fix styles and blueprint</li>
-          <li>Fix database</li>
+          <li>Add an empty state for notes tab.</li>
+          <li>You can now filter notes by date.</li>
+          <li>Clicking on a note now takes you to the calendar view and shows the day dialog.</li>
+          <li>You can now undo from the displayed toast, after editing a day.</li>
+          <li>Notifications can be configured to display at a time a user chooses.</li>
+          <li>Recorded ovulations (via OPK) are now displayed on the insights heatmap.</li>
+          <li>Added shortcuts and a shortcuts dialog.</li>
+          <li>Set up infrastructure for translations.</li>
         </ul>
       </description>
     </release>
