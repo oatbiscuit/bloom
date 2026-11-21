@@ -1,7 +1,7 @@
 data/io.github.oatbiscuit.bloom.desktop.in
 data/io.github.oatbiscuit.bloom.metainfo.xml.in
 data/io.github.oatbiscuit.bloom.gschema.xml
-src/ui/day_dialog.blp
+src/ui/day-dialog.blp
 src/ui/preferences.blp
 src/ui/window.blp
 src/app.vala
@@ -9,4 +9,5 @@ src/cycle_engine.vala
 src/database.vala
 src/day_dialog.vala
 src/preferences.vala
+src/shortcuts-dialog.blp
 src/window.vala
