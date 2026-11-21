@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 11:09+0000\n"
+"POT-Creation-Date: 2026-11-21 11:20+0000\n"
 "Last-Translator: Automatically generated\n"
 
 #: data/io.github.oatbiscuit.bloom.desktop.in:2
