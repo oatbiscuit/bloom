@@ -157,3 +157,14 @@ jobs:
             artifacts/rpm-package-x86_64/**/*.rpm
             artifacts/rpm-package-aarch64/**/*.rpm
           draft: false
+
+  flatpark:
+    name: Publish to FlatPark
+    needs: [release]
+    runs-on: ubuntu-26.04
+    continue-on-error: true
+    steps:
+      - uses: flatpark/publish-action@v1
+        with:
+          app-id: io.github.oatbiscuit.bloom
+          tag: ${{ github.ref_name }}
