@@ -1,3 +1,7 @@
+<p align="center">
+    <img src="https://raw.githubusercontent.com/oatbiscuit/bloom/main/data/icons/hicolor/scalable/apps/io.github.oatbiscuit.bloom.svg" alt="Bloom Icon">
+</p>
+
 # bloom
 **bloom** is a private and native cycle tracker for GNOME. It helps you understand your body's patterns by predicting upcoming periods and ovulation days without ever sending your data to the cloud or third-party services.
 
@@ -18,7 +22,19 @@
 <img src="https://raw.githubusercontent.com/oatbiscuit/bloom/main/data/screenshots/insights.png">
 
 ## installation
-### flatpak (recommended)
+### flatpak (FlatPark)
+
+[![Get it on FlatPark](https://flatpark.org/badges/get-it-on-flatpark.svg)](https://flatpark.org/apps/io.github.oatbiscuit.bloom/)
+
+or
+
+```bash
+flatpak --user remote-add --if-not-exists flatpark https://dl.flatpark.org/flatpark.flatpakrepo
+flatpak --user remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install --user flatpark io.github.oatbiscuit.bloom
+```
+
+### flatpak (manual)
 you can download the latest `.flatpak` bundle from the [Releases](https://github.com/oatbiscuit/bloom/releases/latest) page.
 
 to install it via the terminal:
