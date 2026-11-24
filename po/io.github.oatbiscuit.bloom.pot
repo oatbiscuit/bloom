@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Bloom\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-21 16:23+0000\n"
+"POT-Creation-Date: 2026-11-24 11:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/io.github.oatbiscuit.bloom.desktop.in:2
 #: data/io.github.oatbiscuit.bloom.metainfo.xml.in:8 src/ui/window.blp:5
-#: src/app.vala:71
+#: src/app.vala:70
 msgid "Bloom"
 msgstr ""
 
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Health Tracker"
 msgstr ""
 
-#: data/io.github.oatbiscuit.bloom.desktop.in:4 src/app.vala:72
+#: data/io.github.oatbiscuit.bloom.desktop.in:4 src/app.vala:71
 msgid "Track your menstrual cycle and symptoms"
 msgstr ""
 
@@ -525,15 +525,15 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: src/app.vala:78
+#: src/app.vala:77
 msgid "translator-credits"
 msgstr ""
 
-#: src/app.vala:85
+#: src/app.vala:84
 msgid "Medical Disclaimer"
 msgstr ""
 
-#: src/app.vala:86
+#: src/app.vala:85
 msgid ""
 "Bloom is a wellness tracker intended for personal awareness only. It is not "
 "a medical application and should not be used as a method of contraception or "
@@ -541,23 +541,23 @@ msgid ""
 "historical data and should not replace professional medical advice."
 msgstr ""
 
-#: src/app.vala:148 src/app.vala:151
+#: src/app.vala:147 src/app.vala:150
 msgid "Period Approaching"
 msgstr ""
 
-#: src/app.vala:149
+#: src/app.vala:148
 msgid "Your period is due in 2 days."
 msgstr ""
 
-#: src/app.vala:152
+#: src/app.vala:151
 msgid "Your period is due tomorrow."
 msgstr ""
 
-#: src/app.vala:154
+#: src/app.vala:153
 msgid "Period Expected Today"
 msgstr ""
 
-#: src/app.vala:155
+#: src/app.vala:154
 msgid "Your period is predicted to start today."
 msgstr ""
 
