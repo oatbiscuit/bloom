@@ -40,7 +40,6 @@ public class Bloom.Application : Adw.Application {
         this.add_action_entries (action_entries, this);
         this.set_accels_for_action ("app.quit", { "<primary>q" });
         this.set_accels_for_action ("app.preferences", { "<primary>comma" });
-        this.set_accels_for_action ("app.shortcuts", { "F1" });
         
         GLib.Timeout.add_seconds (3600, () => {
             check_period_reminder ();
